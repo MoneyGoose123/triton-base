@@ -28,6 +28,45 @@
       box-shadow: 0 0 30px rgba(0,0,0,0.08);
     }
 
+    /* Vision */
+    .vision-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .vision-img {
+      width: 100%;
+      display: block;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .vision-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(26,39,68,0.92) 0%, transparent 100%);
+      padding: 40px 48px 32px;
+      color: #fff;
+    }
+    .vision-tag {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .vision-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .vision-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-top: 4px;
+    }
+
     /* Header */
     .header {
       background: var(--navy);
@@ -268,6 +307,16 @@
 </head>
 <body>
 <div class="page">
+
+  <!-- Vision Image -->
+  <div class="vision-section">
+    <img src="vision.png" alt="PROJECT TRITON BASE Vision" class="vision-img">
+    <div class="vision-overlay">
+      <div class="vision-tag">Vision Image</div>
+      <div class="vision-title">Outdoor Seminar Pavilion × Sauna × Tailgate Bar</div>
+      <div class="vision-sub">All-Weather Learning & Community Hub — up to 15 people</div>
+    </div>
+  </div>
 
   <!-- Header -->
   <div class="header">
