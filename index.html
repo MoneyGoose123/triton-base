@@ -272,6 +272,85 @@
       margin-top: 1px;
     }
 
+    /* Manifesto */
+    .manifesto {
+      background: #0d1a2e;
+      padding: 56px 48px;
+      text-align: center;
+    }
+    .manifesto-quote {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+    .manifesto-quote em {
+      color: var(--gold);
+      font-style: normal;
+    }
+    .manifesto-name {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+    }
+
+    /* Hub experiences */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .hub-item {
+      background: #fff;
+      padding: 20px 22px;
+    }
+    .hub-item-icon { font-size: 24px; margin-bottom: 8px; }
+    .hub-item-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .hub-item-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+    /* Three circles */
+    .circles {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .circle-item {
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.4;
+      padding: 8px;
+    }
+    .circle-item .circle-icon { font-size: 20px; margin-bottom: 4px; }
+
+    /* Long-term vision */
+    .longterm {
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 24px 28px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 2;
+    }
+    .longterm strong { color: var(--gold); }
+
     /* Footer */
     .footer {
       background: var(--navy);
@@ -318,6 +397,16 @@
     </div>
   </div>
 
+  <!-- Manifesto -->
+  <div class="manifesto">
+    <div class="manifesto-quote">
+      私はビジネスとプライベートを切り分けない。<br>
+      全てが同じ延長線上の、<em>一つの人生</em>だ。<br><br>
+      この場所は、<em>みんなの人生が交差する場所</em>にしたい。
+    </div>
+    <div class="manifesto-name">— DAISUKE NAKAMURA</div>
+  </div>
+
   <!-- Header -->
   <div class="header">
     <div class="header-label">Business Plan Summary</div>
@@ -337,14 +426,66 @@
     <div class="section">
       <div class="section-title">01 — Project Concept</div>
       <div class="concept-box">
-        デジタルビジネス（<strong>eBay輸出・システム開発</strong>）で安定した外貨キャッシュフローを確保しつつ、<strong>農山村型アナログ実業（鮨・ジビエ・民泊）</strong>と<strong>エネルギー自給（ソーラー発電）</strong>を融合。<br>
-        外部環境の変化に左右されない、<strong>収益・食料・エネルギーをすべて自給する最強の自立型ライフスタイル</strong>を群馬県桐生市黒保根町に構築する。
+        群馬県桐生市黒保根町・赤城山麓583mに、<strong>「人生が交差するハブ」</strong>を作る。<br><br>
+        マグロ解体ショー、寿司、ジビエ料理、薪サウナ、焚き火セミナー——<strong>自分がやりたいことをやる。</strong>それを友人に、スクールの仲間に、SNSで出会った人に提供する。<br><br>
+        収益は結果としてついてくる。仮にそうならなくても、<strong>自分が住む場所だからそれでいい。</strong><br>
+        ソーラーで電力を自給し、マイナス60度の冷凍庫でマグロとジビエを保存する。老後も一人でここで生きていける。
+      </div>
+    </div>
+
+    <!-- 1.5 Hub体験 -->
+    <div class="section">
+      <div class="section-title">02 — The Hub Experience</div>
+      <div class="hub-grid">
+        <div class="hub-item">
+          <div class="hub-item-icon">🐟</div>
+          <div class="hub-item-title">マグロ解体ショー</div>
+          <div class="hub-item-desc">本マグロを丸ごと一本。解体から握りまで、非日常の体験を目の前で。</div>
+        </div>
+        <div class="hub-item">
+          <div class="hub-item-icon">🍣</div>
+          <div class="hub-item-title">出張寿司・鮨体験</div>
+          <div class="hub-item-desc">寿司職人が黒保根で握る。東京では絶対にない、山の中の本格鮨。</div>
+        </div>
+        <div class="hub-item">
+          <div class="hub-item-icon">🦌</div>
+          <div class="hub-item-title">ジビエ調達・料理</div>
+          <div class="hub-item-desc">狩猟免許取得後、自ら獲った鹿・猪を捌いて調理。命をいただく体験。</div>
+        </div>
+        <div class="hub-item">
+          <div class="hub-item-icon">🔥</div>
+          <div class="hub-item-title">薪サウナ × 焚き火</div>
+          <div class="hub-item-desc">バレルサウナで整い、焚き火を囲んで語る。赤城山麓の星空の下で。</div>
+        </div>
+        <div class="hub-item">
+          <div class="hub-item-icon">📡</div>
+          <div class="hub-item-title">屋外セミナー・合宿</div>
+          <div class="hub-item-desc">eBayスクール、ビジネス、人生設計。焚き火とプロジェクターで学ぶ非日常の場。</div>
+        </div>
+        <div class="hub-item">
+          <div class="hub-item-icon">🛻</div>
+          <div class="hub-item-title">トライトン・テールゲートバー</div>
+          <div class="hub-item-desc">荷台がバーになる。ウイスキーと料理を並べて、仲間と語り合う夜。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- コミュニティ -->
+    <div class="section">
+      <div class="section-title">03 — Community Circles</div>
+      <div class="circles">
+        <div class="circle-item"><div class="circle-icon">👥</div>桐生の<br>遊び仲間</div>
+        <div class="circle-item"><div class="circle-icon">📚</div>eBay<br>スクール仲間</div>
+        <div class="circle-item"><div class="circle-icon">📱</div>SNSで<br>出会った人</div>
+      </div>
+      <div style="text-align:center; font-size:13px; color:var(--muted); margin-top:8px;">
+        この3つのサークルが黒保根で交差し、新しい人脈と体験が生まれる
       </div>
     </div>
 
     <!-- 2. 事業者プロフィール -->
     <div class="section">
-      <div class="section-title">02 — Applicant Profile</div>
+      <div class="section-title">04 — Applicant Profile</div>
       <div class="grid-2">
         <div class="card">
           <div class="card-title"><span class="icon">💼</span>既存事業（収益基盤）</div>
@@ -369,7 +510,7 @@
 
     <!-- 3. 拠点・設備計画 -->
     <div class="section">
-      <div class="section-title">03 — Base & Equipment Plan</div>
+      <div class="section-title">05 — Base & Equipment Plan</div>
       <div class="grid-3">
         <div class="card">
           <div class="card-title"><span class="icon">🏡</span>黒保根拠点（不動産）</div>
@@ -406,7 +547,7 @@
 
     <!-- 4. 収益計画 -->
     <div class="section">
-      <div class="section-title">04 — Revenue Projection（月次）</div>
+      <div class="section-title">06 — Revenue Projection（月次）</div>
       <div class="revenue-grid">
         <div class="revenue-card">
           <div class="label">民泊（Airbnb）</div>
@@ -437,7 +578,7 @@
 
     <!-- 5. 資金計画 -->
     <div class="section">
-      <div class="section-title">05 — Financing Plan</div>
+      <div class="section-title">07 — Financing Plan</div>
       <table class="finance-table">
         <thead>
           <tr>
@@ -506,7 +647,7 @@
 
     <!-- 6. シナジー効果 -->
     <div class="section">
-      <div class="section-title">06 — Business Synergy</div>
+      <div class="section-title">08 — Business Synergy</div>
       <div class="synergy">
         <div class="synergy-row">
           <div class="synergy-badge">節税</div>
@@ -527,9 +668,20 @@
       </div>
     </div>
 
+    <!-- 長期ビジョン -->
+    <div class="section">
+      <div class="section-title">09 — Long-term Vision</div>
+      <div class="longterm">
+        <strong>ソーラー発電</strong>で電力を完全自給。<strong>マイナス60度冷凍庫</strong>でマグロとジビエを長期保存。<br>
+        固定費を限りなくゼロに近づけ、<strong>老後も一人でここで生きていける</strong>インフラを今のうちに作る。<br><br>
+        収益が上がればうれしい。上がらなくても、ここに住む。<br>
+        <strong>この場所自体が、人生の答えだ。</strong>
+      </div>
+    </div>
+
     <!-- 7. 実行ロードマップ -->
     <div class="section">
-      <div class="section-title">07 — Action Roadmap</div>
+      <div class="section-title">10 — Action Roadmap</div>
       <ul class="action-list">
         <li>
           <div class="action-num">1</div>
