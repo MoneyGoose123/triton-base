@@ -656,30 +656,37 @@
 
     <!-- 4. 収益計画 -->
     <div class="section">
-      <div class="section-title">06 — Revenue Projection（月次）</div>
-      <div class="revenue-grid">
-        <div class="revenue-card">
-          <div class="label">民泊（Airbnb）</div>
-          <div class="value">20<span class="unit">万円</span></div>
-          <div class="note">月8泊 × 2.5万円<br>（サウナ付きで高単価化）</div>
+      <div class="section-title">06 — Revenue Projection</div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+        <div style="border:2px solid var(--border); border-radius:8px; padding:16px;">
+          <div style="font-size:11px; font-weight:700; color:var(--muted); letter-spacing:2px; margin-bottom:12px;">YEAR 1（立ち上げ期）</div>
+          <div style="font-size:11px; color:var(--muted); margin-bottom:8px;">レビュー構築・認知拡大フェーズ</div>
+          <table style="width:100%; font-size:12px; border-collapse:collapse;">
+            <tr><td style="padding:4px 0; color:var(--muted)">民泊 Airbnb</td><td style="text-align:right; font-weight:600;">6万円</td></tr>
+            <tr><td style="padding:4px 0; color:var(--muted)">鮨体験・マグロ解体</td><td style="text-align:right; font-weight:600;">3万円</td></tr>
+            <tr><td style="padding:4px 0; color:var(--muted)">体験ツアー（試行）</td><td style="text-align:right; font-weight:600;">1万円</td></tr>
+            <tr style="border-top:1px solid var(--border);"><td style="padding:6px 0 2px; font-weight:700;">合計</td><td style="text-align:right; font-weight:700; color:var(--navy); font-size:15px;">約10万円</td></tr>
+          </table>
+          <div style="margin-top:8px; font-size:10px; color:var(--muted);">月次返済25万円はeBay既存収益でカバー</div>
         </div>
-        <div class="revenue-card">
-          <div class="label">ジビエ・体験ツアー</div>
-          <div class="value">5<span class="unit">万円</span></div>
-          <div class="note">解体体験・ジビエ販売<br>（狩猟免許取得後）</div>
-        </div>
-        <div class="revenue-card">
-          <div class="label">鮨体験・マグロ解体（現地）</div>
-          <div class="value">6<span class="unit">万円</span></div>
-          <div class="note">月4〜6回<br>× 1〜2万円/人</div>
+        <div style="border:2px solid var(--gold); border-radius:8px; padding:16px;">
+          <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">YEAR 2+（安定期）</div>
+          <div style="font-size:11px; color:var(--muted); margin-bottom:8px;">レビュー蓄積・リピーター獲得後</div>
+          <table style="width:100%; font-size:12px; border-collapse:collapse;">
+            <tr><td style="padding:4px 0; color:var(--muted)">民泊 Airbnb（月8泊×2.5万）</td><td style="text-align:right; font-weight:600;">20万円</td></tr>
+            <tr><td style="padding:4px 0; color:var(--muted)">鮨体験・マグロ解体</td><td style="text-align:right; font-weight:600;">6万円</td></tr>
+            <tr><td style="padding:4px 0; color:var(--muted)">ジビエ体験・販売</td><td style="text-align:right; font-weight:600;">5万円</td></tr>
+            <tr style="border-top:1px solid var(--border);"><td style="padding:6px 0 2px; font-weight:700;">合計</td><td style="text-align:right; font-weight:700; color:var(--navy); font-size:15px;">約31万円</td></tr>
+          </table>
+          <div style="margin-top:8px; font-size:10px; color:var(--muted);">返済25万円を差し引いても月+6万円</div>
         </div>
       </div>
-      <div style="margin-top:12px; background:#f9f8f4; border-radius:8px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; font-size:13px;">
-        <span style="color:var(--muted)">新規事業 月次売上合計（想定）</span>
-        <span style="font-size:20px; font-weight:700; color:var(--navy)">約 31万円 / 月</span>
-      </div>
-      <div style="margin-top:8px; font-size:11px; color:var(--muted); padding: 0 4px;">
-        ※ eBay輸出・eBayスクール・システム開発の既存収益は含まない。ローン返済（月6.5万円）を十分カバーする水準。
+
+      <div style="background:#f9f8f4; border-radius:8px; padding:16px 20px; font-size:12px; color:var(--muted);">
+        ※ eBay輸出・eBayスクール・システム開発の既存収益は含まない。新規事業収益が返済を上回るまでは既存収益がバッファ。<br>
+        ※ サウナ付き一棟貸しの相場は2〜5万円/泊（参考：BEST OF VILLA with SAUNA 2025調査）。2.5万円設定は保守的。<br>
+        ※ 冬季（12〜3月）はサウナ・雪体験需要増で単価アップ見込み。
       </div>
     </div>
 
@@ -688,88 +695,121 @@
     <!-- 5. 資金計画 -->
     <div class="section">
       <div class="section-title">07 — Financing Plan</div>
+
       <table class="finance-table">
         <thead>
           <tr>
+            <th>カテゴリ</th>
             <th>項目</th>
-            <th>用途</th>
             <th style="text-align:right">金額（万円）</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>不動産取得</td>
-            <td>黒保根物件（土地・建物）</td>
+            <td rowspan="3" style="font-weight:700; color:var(--navy); background:#f5f5f0;">不動産</td>
+            <td>物件取得（土地・建物）</td>
             <td class="amount">980</td>
           </tr>
           <tr>
-            <td>擁壁工事</td>
-            <td>境界擁壁整備（買主負担分）</td>
+            <td>擁壁工事（買主負担分）</td>
             <td class="amount">180</td>
           </tr>
           <tr>
-            <td>ソーラー・蓄電池</td>
-            <td>エネルギー自給設備</td>
+            <td>不動産取得税・登記・司法書士費用</td>
+            <td class="amount">60</td>
+          </tr>
+          <tr>
+            <td rowspan="7" style="font-weight:700; color:var(--navy); background:#f5f5f0;">設備・工事</td>
+            <td>既存建物リノベ・内装・民泊整備</td>
+            <td class="amount">60</td>
+          </tr>
+          <tr>
+            <td>ソーラーパネル・蓄電池</td>
             <td class="amount">150</td>
           </tr>
           <tr>
-            <td>超低温冷凍庫（移設）</td>
-            <td>マイナス60度・既保有品を黒保根へ移設</td>
-            <td class="amount">10</td>
-          </tr>
-          <tr>
-            <td>事業用車両</td>
-            <td>三菱トライトン GSR</td>
-            <td class="amount">575</td>
-          </tr>
-          <tr>
-            <td>屋外テラス・デッキ新設</td>
-            <td>セミナーパビリオン・焚き火ピット・シェードセイル</td>
+            <td>屋外テラス・デッキ新設（セミナーパビリオン）</td>
             <td class="amount">150</td>
           </tr>
           <tr>
-            <td>バレルサウナ本体</td>
-            <td>totonoü 4.0m（5〜6人用）+ HARVIA Legend 150 薪ストーブ</td>
+            <td>バレルサウナ本体（totonoü 4.0m + HARVIA Legend 150）</td>
             <td class="amount">230</td>
           </tr>
           <tr>
-            <td>水風呂・外気浴設備</td>
-            <td>ヒノキ製タル型水風呂 + ゼンスイ チラー（14〜17℃管理）</td>
+            <td>水風呂・外気浴設備（ヒノキタル + ゼンスイ チラー）</td>
             <td class="amount">100</td>
           </tr>
           <tr>
-            <td>サウナ設置工事</td>
-            <td>基礎・排水・電気工事</td>
+            <td>サウナ基礎・設置工事</td>
             <td class="amount">30</td>
           </tr>
           <tr>
-            <td>内装・民泊整備</td>
-            <td>Airbnb運用のための設備</td>
-            <td class="amount">60</td>
+            <td>超低温冷凍庫（既保有・移設のみ）</td>
+            <td class="amount">10</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:var(--navy); background:#f5f5f0;">車両</td>
+            <td>三菱トライトン GSR（24-25年式・ヤマブキ）</td>
+            <td class="amount">575</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700; color:var(--navy); background:#f5f5f0;">予備費</td>
+            <td>設計変更・想定外工事・諸雑費（10%）</td>
+            <td class="amount">80</td>
           </tr>
           <tr class="total-row">
-            <td colspan="2">合計（概算）</td>
-            <td class="amount">2,465</td>
+            <td colspan="2">総投資額（概算）</td>
+            <td class="amount">2,605</td>
           </tr>
         </tbody>
       </table>
 
-      <div style="margin-top:20px;" class="grid-2">
-        <div class="card">
-          <div class="card-title">🏦 桐生信用金庫（きりしん）</div>
-          <ul>
-            <li>不動産取得・車両ローン</li>
-            <li>地域密着型の低利融資</li>
-            <li>15年・月々 約6.5万円（1,000万円の場合）</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">🏛️ 日本政策金融公庫</div>
-          <ul>
-            <li>新規事業（民泊・ジビエ）設備資金</li>
-            <li>創業・農林漁業枠の活用</li>
-            <li>無担保・低金利の活用検討</li>
-          </ul>
+      <div style="margin-top:24px;">
+        <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:14px;">REPAYMENT SIMULATION</div>
+        <table class="finance-table">
+          <thead>
+            <tr>
+              <th>ローン種別</th>
+              <th>借入先</th>
+              <th style="text-align:right">借入額</th>
+              <th style="text-align:right">条件</th>
+              <th style="text-align:right">月返済額</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>不動産ローン</td>
+              <td>桐生信用金庫</td>
+              <td class="amount">1,160万円</td>
+              <td style="text-align:right; font-size:12px; color:var(--muted)">20年/1.5%</td>
+              <td class="amount">約5.7万円</td>
+            </tr>
+            <tr>
+              <td>設備資金</td>
+              <td>日本政策金融公庫</td>
+              <td class="amount">730万円</td>
+              <td style="text-align:right; font-size:12px; color:var(--muted)">7年/1.5%</td>
+              <td class="amount">約9.2万円</td>
+            </tr>
+            <tr>
+              <td>車両ローン</td>
+              <td>桐生信用金庫</td>
+              <td class="amount">575万円</td>
+              <td style="text-align:right; font-size:12px; color:var(--muted)">5年/2.5%</td>
+              <td class="amount">約10.2万円</td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2">月次返済合計</td>
+              <td class="amount">2,465万円</td>
+              <td></td>
+              <td class="amount">約25万円</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:10px; font-size:11px; color:var(--muted);">
+          ※ 諸費用（取得税・登記・予備費 約140万円）は自己資金で対応。<br>
+          ※ 月次収益31万円（安定期）− 返済25万円 ＝ <strong>月+6万円</strong>（新規事業のみ）。eBay既存収益は別途。<br>
+          ※ Year1（立ち上げ期）は収益約10万円のため、差額15万円はeBay収益でカバー。
         </div>
       </div>
     </div>
@@ -784,7 +824,7 @@
         </div>
         <div class="synergy-row">
           <div class="synergy-badge">物流</div>
-          <div>トライトンの荷台が<strong>動く厨房・物流基地</strong>として機能。出張寿司の機材・ジビエの搬送・民泊備品の運搬をすべて一台で完結。</div>
+          <div>トライトンの荷台が<strong>物流基地</strong>として機能。マグロ・ジビエの搬送、民泊備品の運搬、山林フィールドへの機材輸送をすべて一台で完結。</div>
         </div>
         <div class="synergy-row">
           <div class="synergy-badge">ブランド</div>
