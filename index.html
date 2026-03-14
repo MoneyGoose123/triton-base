@@ -296,6 +296,51 @@
       letter-spacing: 2px;
     }
 
+    /* Gallery */
+    .gallery-section {
+      background: #0d1a2e;
+      padding: 40px 48px;
+    }
+    .gallery-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .gallery-main {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      max-height: 480px;
+      object-fit: cover;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .gallery-thumb {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      height: 160px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .gallery-thumb:hover { opacity: 0.85; }
+    .gallery-caption {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 12px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
     /* Hub experiences */
     .hub-grid {
       display: grid;
@@ -395,6 +440,17 @@
       <div class="vision-title">Outdoor Seminar Pavilion × Sauna × Tailgate Bar</div>
       <div class="vision-sub">All-Weather Learning & Community Hub — up to 15 people</div>
     </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery-section">
+    <div class="gallery-label">Project Vision Gallery</div>
+    <img src="base-overview.png" alt="PROJECT TRITON BASE 完成イメージ（俯瞰）" class="gallery-main">
+    <div class="gallery-thumbs">
+      <img src="sauna-night.png" alt="バレルサウナ × 水風呂（夜景）" class="gallery-thumb">
+      <img src="sauna-morning.png" alt="バレルサウナ × 水風呂（夜明け）" class="gallery-thumb">
+    </div>
+    <div class="gallery-caption">All images: AI-generated concept visualization / Gemini</div>
   </div>
 
   <!-- Manifesto -->
