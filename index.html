@@ -1189,40 +1189,97 @@
       </div>
     </div>
 
-    <div class="revenue-grid fade-in">
-      <div class="revenue-card year1">
-        <div class="rev-label">YEAR 1（立ち上げ期）</div>
-        <div class="rev-sub">レビュー構築・SNS認知拡大フェーズ</div>
-        <table>
-          <tr><td>素泊まりプラン（月4泊）</td><td>7万円</td></tr>
-          <tr><td>鮨付きオプション（月2回）</td><td>5万円</td></tr>
-          <tr><td>BBQ肉セット（月2回）</td><td>2万円</td></tr>
-          <tr class="rev-total-row">
-            <td>合計</td>
-            <td><span class="rev-total-amount">約14</span>万円</td>
-          </tr>
-        </table>
-        <div class="rev-note">返済14.3万円との差額はほぼトントン</div>
+    <!-- 月次固定費（正直版） -->
+    <div style="background:var(--navy); border-radius:12px; padding:24px 28px; margin-bottom:28px; color:var(--white);" class="fade-in">
+      <div style="font-size:10px; letter-spacing:3px; color:var(--gold); font-weight:700; margin-bottom:16px;">REAL MONTHLY FIXED COSTS（正直な固定費）</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:13px;">
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>不動産ローン返済</span><span style="color:var(--gold);">5.7万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>設備資金返済</span><span style="color:var(--gold);">8.6万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>固定資産税（年間平均）</span><span>0.8万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>電気代（ソーラー相殺後）</span><span>2.5万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>水道</span><span>0.7万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>ネット・通信</span><span>0.7万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>保険（民泊・建物）</span><span>1.5万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>修繕積立</span><span>2.0万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>除雪・維持管理（年均）</span><span>1.0万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>清掃・消耗品</span><span>0.7万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.1);"><span>Airbnb手数料（3%）</span><span>0.7万円</span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0;"><span style="font-weight:700; color:var(--gold);">合計（真の固定費）</span><span style="font-weight:700; color:var(--gold); font-size:16px;">24.9万円/月</span></div>
       </div>
-      <div class="revenue-card year2">
-        <div class="rev-label">YEAR 2+（安定期）</div>
-        <div class="rev-sub">リピーター定着・SNSファン来訪フェーズ</div>
-        <table>
-          <tr><td>素泊まりプラン（月6泊）</td><td>10万円</td></tr>
-          <tr><td>鮨付きオプション（月4回）</td><td>10万円</td></tr>
-          <tr><td>BBQ肉セット（月3回）</td><td>4万円</td></tr>
-          <tr class="rev-total-row">
-            <td>合計</td>
-            <td><span class="rev-total-amount">約24</span>万円</td>
-          </tr>
-        </table>
-        <div class="rev-note">返済14.3万円差し引きで月 <strong>+9.7万円</strong></div>
+      <div style="margin-top:12px; font-size:11px; color:rgba(255,255,255,0.5);">
+        ※ 変動費別途：鮨食材（売上の約30%）、BBQ食材（売上の約35%）<br>
+        ※ 損益分岐点：月次総売上 約36万円以上で黒字（食材費25%として）
       </div>
     </div>
+
+    <!-- 3シナリオ損益 -->
+    <div style="margin-bottom:12px;" class="fade-in">
+      <div style="font-size:10px; letter-spacing:3px; color:var(--navy); font-weight:700; margin-bottom:16px; padding-left:12px; border-left:3px solid var(--gold);">YEAR 2+ 月次損益シミュレーション（3シナリオ）</div>
+    </div>
+
+    <div class="revenue-grid fade-in" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="revenue-card" style="border-top:3px solid #999;">
+        <div class="rev-label" style="color:#666;">SCENARIO A</div>
+        <div class="rev-sub">保守（現行単価）</div>
+        <table>
+          <tr><td>素泊まり 6泊</td><td>10万円</td></tr>
+          <tr><td>鮨 4回</td><td>10万円</td></tr>
+          <tr><td>BBQ 3回</td><td>4万円</td></tr>
+          <tr><td style="color:#999;">食材費（変動）</td><td style="color:#999;">−4.4万円</td></tr>
+          <tr><td style="font-weight:700;">純売上</td><td style="font-weight:700;">19.6万円</td></tr>
+          <tr><td style="color:#999;">固定費</td><td style="color:#999;">−24.9万円</td></tr>
+          <tr class="rev-total-row">
+            <td>損益</td>
+            <td><span class="rev-total-amount" style="color:#e05555;">−5.3万円</span></td>
+          </tr>
+        </table>
+        <div class="rev-note" style="color:#c0392b;">⚠️ 単価が低すぎて赤字。現行単価の見直しが必要。</div>
+      </div>
+
+      <div class="revenue-card year1">
+        <div class="rev-label" style="color:var(--navy);">SCENARIO B</div>
+        <div class="rev-sub">現実（グループ来訪・適正単価）</div>
+        <table>
+          <tr><td>素泊まり 6泊（3名均）</td><td>18万円</td></tr>
+          <tr><td>鮨 4回（3名均）</td><td>16万円</td></tr>
+          <tr><td>BBQ 3回</td><td>6万円</td></tr>
+          <tr><td style="color:#999;">食材費（変動）</td><td style="color:#999;">−6.9万円</td></tr>
+          <tr><td style="font-weight:700;">純売上</td><td style="font-weight:700;">33.1万円</td></tr>
+          <tr><td style="color:#999;">固定費</td><td style="color:#999;">−24.9万円</td></tr>
+          <tr class="rev-total-row">
+            <td>損益</td>
+            <td><span class="rev-total-amount">+8.2万円</span></td>
+          </tr>
+        </table>
+        <div class="rev-note">eBayコミュニティ・SNSファンの<strong>グループ来訪</strong>が鍵。1泊3万/人なら現実圏。</div>
+      </div>
+
+      <div class="revenue-card year2">
+        <div class="rev-label">SCENARIO C</div>
+        <div class="rev-sub">上振れ（プレミアム体験・高稼働）</div>
+        <table>
+          <tr><td>素泊まり 8泊（4名均）</td><td>40万円</td></tr>
+          <tr><td>鮨 6回（4名均）</td><td>30万円</td></tr>
+          <tr><td>BBQ 4回</td><td>10万円</td></tr>
+          <tr><td style="color:#999;">食材費（変動）</td><td style="color:#999;">−12.5万円</td></tr>
+          <tr><td style="font-weight:700;">純売上</td><td style="font-weight:700;">67.5万円</td></tr>
+          <tr><td style="color:#999;">固定費</td><td style="color:#999;">−24.9万円</td></tr>
+          <tr class="rev-total-row">
+            <td>損益</td>
+            <td><span class="rev-total-amount">+42.6万円</span></td>
+          </tr>
+        </table>
+        <div class="rev-note">東京のおまかせ鮨（3〜5万/人）× 山体験の希少性。<strong>このポジションが狙える。</strong></div>
+      </div>
+    </div>
+
     <div class="note-box fade-in">
-      ※ eBay輸出・eBayスクール・システム開発の既存収益は含まない。<br>
-      ※ ジビエは現時点では収益項目に含まない。SNS発信（狩猟取得過程）→ファン来訪という流れで民泊稼働率を高める役割。<br>
-      ※ 冬季（12〜3月）はサウナ・雪体験需要増で単価アップ見込み。サウナ付き一棟貸し相場2〜5万円/泊。
+      <strong>結論：単価設計が全て。</strong><br>
+      素泊まり1.5万円/泊（1棟貸し）は安すぎる。「クロマグロ漁師 × 寿司職人が作った山の隠れ宿」は最低でも1人2〜3万円の価値がある。<br>
+      グループ3〜4名・1人2.5万円 = 1泊10万円。東京のホテル代+おまかせ鮨より安くて、体験は圧倒的に上。<br><br>
+      ※ eBay・スクール・AIコンサル収益は含まない（月300万円の安定収益がBASEの安全網）<br>
+      ※ 冬季（12〜3月）：薪サウナ＋雪見外気浴の希少価値で単価アップで補填可能<br>
+      ※ 損益分岐点：月次総売上 <strong>約36万円</strong>（= グループ6人来訪 × 1泊、月2〜3回）
     </div>
   </div>
 
