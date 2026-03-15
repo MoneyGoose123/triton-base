@@ -341,6 +341,54 @@
       letter-spacing: 1px;
     }
 
+    /* Profile */
+    .profile-section {
+      background: #fff;
+      padding: 48px 48px 40px;
+    }
+    .profile-intro {
+      font-size: 16px;
+      line-height: 2;
+      color: var(--navy);
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+    .profile-intro em {
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .dna-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .dna-item {
+      background: #fff;
+      padding: 18px 16px;
+      text-align: center;
+      transition: background 0.15s;
+    }
+    .dna-item:hover { background: #faf9f4; }
+    .dna-icon { font-size: 26px; margin-bottom: 8px; }
+    .dna-title { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 4px; line-height: 1.4; }
+    .dna-desc { font-size: 10px; color: var(--muted); line-height: 1.5; }
+    .dna-coming { opacity: 0.5; }
+    .philosophy-bar {
+      background: var(--navy);
+      border-radius: 8px;
+      padding: 20px 28px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    .philosophy-bar strong { color: var(--gold); }
+
     /* Hub experiences */
     .hub-grid {
       display: grid;
@@ -423,7 +471,9 @@
     @media (max-width: 640px) {
       .header { padding: 28px 24px 24px; }
       .content { padding: 28px 24px; }
+      .profile-section { padding: 32px 24px; }
       .grid-2, .grid-3, .revenue-grid { grid-template-columns: 1fr; }
+      .dna-grid { grid-template-columns: repeat(2, 1fr); }
       .header-meta { gap: 20px; }
       .footer { flex-direction: column; gap: 8px; }
     }
@@ -463,11 +513,70 @@
     <div class="manifesto-name">— DAISUKE NAKAMURA</div>
   </div>
 
+  <!-- Profile -->
+  <div class="profile-section">
+    <div style="font-size:11px; letter-spacing:3px; color:var(--gold); font-weight:700; text-transform:uppercase; margin-bottom:16px;">The Person Behind This Project</div>
+    <div class="profile-intro">
+      薬剤師であり、eBay輸出のプロであり、AIコンサルタントであり、<em>津軽海峡でクロマグロを一本釣りする人間</em>が、<br>
+      群馬の山の中に秘密基地を作ろうとしている。
+    </div>
+
+    <div class="dna-grid">
+      <div class="dna-item">
+        <div class="dna-icon">💊</div>
+        <div class="dna-title">薬剤師</div>
+        <div class="dna-desc">医療・健康の専門知識を持つ</div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-icon">📦</div>
+        <div class="dna-title">eBay輸出<br>スクール主宰</div>
+        <div class="dna-desc">DAIWA・SHIMANOリールを世界へ。スクール生多数</div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-icon">🤖</div>
+        <div class="dna-title">AI・ビジネス<br>コンサルタント</div>
+        <div class="dna-desc">AIを実業に落とし込む実践者</div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-icon">🏔️</div>
+        <div class="dna-title">キリマンジャロ<br>登頂制覇</div>
+        <div class="dna-desc">アフリカ最高峰5,895mを制覇</div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-icon">🎣</div>
+        <div class="dna-title">クロマグロ<br>一本釣り</div>
+        <div class="dna-desc">津軽海峡産。毎年遠征・毎年釣果。年間40〜50回分をストック</div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-icon">🍣</div>
+        <div class="dna-title">寿司職人<br>（マグロ専門）</div>
+        <div class="dna-desc">自ら釣ったクロマグロを-60度熟成して握る</div>
+      </div>
+      <div class="dna-item">
+        <div class="dna-icon">✈️</div>
+        <div class="dna-title">マイル旅行<br>のプロ</div>
+        <div class="dna-desc">WBC観戦でマイアミ→カリブ海クルーズ。お得な旅を実践</div>
+      </div>
+      <div class="dna-item dna-coming">
+        <div class="dna-icon">🦌</div>
+        <div class="dna-title">狩猟師<br>（取得予定）</div>
+        <div class="dna-desc">わな猟免許を目指し、ジビエ調達へ</div>
+      </div>
+    </div>
+
+    <div class="philosophy-bar">
+      トライトンでゲストを駅まで迎えに行く。それは<strong>接客であり、出会いであり、人脈であり、ビジネスチャンス</strong>だ。<br>
+      釣り遠征は<strong>仕入れであり、冒険であり、コンテンツ</strong>だ。<br>
+      黒保根BASEは<strong>自宅であり、事業拠点であり、みんなが集まる場所</strong>だ。<br><br>
+      ビジネスとプライベートに線はない。<strong>全部が、一つの人生だ。</strong>
+    </div>
+  </div>
+
   <!-- Header -->
   <div class="header">
     <div class="header-label">Business Plan Summary</div>
     <h1>PROJECT TRITON BASE</h1>
-    <div class="header-sub">自立型多角経営拠点 事業計画概要書</div>
+    <div class="header-sub">「みんなの人生が交差する場所」— 事業計画概要書</div>
     <div class="header-meta">
       <div class="header-meta-item">申請者<span>中村 大祐</span></div>
       <div class="header-meta-item">事業形態<span>個人事業・法人</span></div>
@@ -910,7 +1019,7 @@
         </li>
         <li>
           <div class="action-num">7</div>
-          <div><strong>工事発注</strong>｜リノベ・テラス・サウナ・ソーラーの施工業者を選定。地元工務店（桐生・みどり市）を優先</div>
+          <div><strong>工事発注</strong>｜リノベ・テラス・サウナ・ソーラーの施工業者を選定。<strong>桐生市の工務店</strong>を優先（地域との関係構築にもなる）</div>
         </li>
         <li>
           <div class="action-num">8</div>
