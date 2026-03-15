@@ -3,266 +3,622 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECT TRITON BASE｜事業計画概要書</title>
+  <title>PROJECT TRITON BASE｜中村大祐の秘密基地計画</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #1a2744;
+      --navy: #0e1c36;
+      --navy-mid: #1a2e52;
       --gold: #c8a84b;
-      --light: #f5f5f0;
-      --text: #222;
-      --muted: #666;
-      --border: #ddd;
+      --gold-light: #e8c96a;
+      --cream: #f7f5ef;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #e2ddd5;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-      background: var(--light);
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: var(--cream);
       color: var(--text);
       font-size: 14px;
-      line-height: 1.7;
-    }
-    .page {
-      max-width: 900px;
-      margin: 0 auto;
-      background: #fff;
-      box-shadow: 0 0 30px rgba(0,0,0,0.08);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Vision */
-    .vision-section {
+    /* ===================== FADE IN ANIMATION ===================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+
+    /* ===================== LAYOUT ===================== */
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--white);
+      box-shadow: 0 4px 80px rgba(0,0,0,0.12);
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
       position: relative;
+      height: 100vh;
+      min-height: 600px;
       overflow: hidden;
     }
-    .vision-img {
+    .hero-img {
       width: 100%;
-      display: block;
-      max-height: 520px;
+      height: 100%;
       object-fit: cover;
       object-position: center 30%;
+      display: block;
+      transition: transform 0.1s ease-out;
     }
-    .vision-overlay {
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,18,35,0.2) 0%,
+        rgba(10,18,35,0.1) 40%,
+        rgba(10,18,35,0.75) 75%,
+        rgba(10,18,35,0.95) 100%
+      );
+    }
+    .hero-content {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(26,39,68,0.92) 0%, transparent 100%);
-      padding: 40px 48px 32px;
-      color: #fff;
+      padding: 0 56px 56px;
     }
-    .vision-tag {
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .hero-title span { color: var(--gold); }
+    .hero-subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 32px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 24px;
+      right: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scrollLine 2s ease infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ===================== MANIFESTO ===================== */
+    .manifesto {
+      background: var(--navy);
+      padding: 72px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .manifesto::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 320px;
+      color: rgba(200,168,75,0.06);
+      position: absolute;
+      top: -60px;
+      left: 30px;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .manifesto-quote {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 2;
+      letter-spacing: 0.5px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .manifesto-quote em {
+      color: var(--gold);
+      font-style: normal;
+    }
+    .manifesto-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 16px;
+    }
+    .manifesto-name {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ===================== PROFILE ===================== */
+    .profile-section {
+      background: var(--white);
+      padding: 72px 56px;
+    }
+    .section-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+    .profile-lead {
+      font-size: 16px;
+      line-height: 2;
+      color: var(--navy);
+      margin-bottom: 40px;
+      font-weight: 500;
+      border-left: 3px solid var(--gold);
+      padding-left: 20px;
+    }
+    .profile-lead em {
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .dna-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .dna-item {
+      background: var(--white);
+      padding: 24px 16px;
+      text-align: center;
+      transition: background 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .dna-item:hover {
+      background: #fdf9f0;
+      transform: translateY(-2px);
+      z-index: 1;
+      position: relative;
+    }
+    .dna-icon { font-size: 30px; margin-bottom: 10px; }
+    .dna-title { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 5px; line-height: 1.5; }
+    .dna-desc { font-size: 10px; color: var(--muted); line-height: 1.6; }
+    .dna-coming { opacity: 0.45; }
+    .philosophy-bar {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 12px;
+      padding: 28px 32px;
+      color: var(--white);
+      font-size: 14px;
+      line-height: 2;
+    }
+    .philosophy-bar strong { color: var(--gold); }
+
+    /* ===================== GALLERY ===================== */
+    .gallery-section {
+      background: #0a1223;
+      padding: 56px 56px;
+    }
+    .gallery-main {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+      max-height: 520px;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .gallery-thumb {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      height: 180px;
+      object-fit: cover;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .gallery-thumb:hover { opacity: 0.88; transform: scale(1.01); }
+    .gallery-caption {
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      margin-top: 14px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    /* ===================== CONTENT SECTIONS ===================== */
+    .section-wrapper {
+      padding: 64px 56px;
+    }
+    .section-wrapper.alt {
+      background: var(--cream);
+    }
+    .section-wrapper.dark {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .section-title {
       font-size: 10px;
       letter-spacing: 3px;
       color: var(--gold);
       text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .vision-title {
-      font-size: 22px;
       font-weight: 700;
-      line-height: 1.4;
-    }
-    .vision-sub {
-      font-size: 13px;
-      color: rgba(255,255,255,0.65);
-      margin-top: 4px;
-    }
-
-    /* Header */
-    .header {
-      background: var(--navy);
-      color: #fff;
-      padding: 40px 48px 32px;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      right: -60px;
-      top: -60px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(200,168,75,0.12);
-    }
-    .header-label {
-      font-size: 11px;
-      letter-spacing: 3px;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .header h1 {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
-    }
-    .header-sub {
-      font-size: 13px;
-      color: rgba(255,255,255,0.65);
-    }
-    .header-meta {
-      margin-top: 24px;
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .header-meta-item {
-      font-size: 12px;
-      color: rgba(255,255,255,0.7);
-    }
-    .header-meta-item span {
-      display: block;
-      font-size: 15px;
-      color: #fff;
-      font-weight: 600;
-      margin-top: 2px;
-    }
-
-    /* Content */
-    .content {
-      padding: 40px 48px;
-    }
-
-    .section {
-      margin-bottom: 36px;
-    }
-    .section-title {
-      font-size: 11px;
-      letter-spacing: 2.5px;
-      color: var(--gold);
-      text-transform: uppercase;
-      font-weight: 700;
+      padding-left: 12px;
       border-left: 3px solid var(--gold);
-      padding-left: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+    }
+    .section-title.light {
+      color: rgba(200,168,75,0.9);
     }
 
-    /* Concept */
+    /* ===================== CONCEPT BOX ===================== */
     .concept-box {
-      background: var(--navy);
-      color: #fff;
-      border-radius: 8px;
-      padding: 24px 28px;
-      line-height: 1.9;
-      font-size: 14px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: var(--white);
+      border-radius: 12px;
+      padding: 32px 36px;
+      line-height: 2;
+      font-size: 15px;
     }
-    .concept-box strong {
-      color: var(--gold);
-    }
+    .concept-box strong { color: var(--gold); }
 
-    /* Grid */
+    /* ===================== KPI STRIP ===================== */
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 32px;
+    }
+    .kpi-item {
+      background: var(--white);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .kpi-label { font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+    .kpi-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .kpi-unit { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .kpi-note { font-size: 10px; color: var(--muted); margin-top: 6px; }
+
+    /* ===================== GRID ===================== */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 
     .card {
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 22px;
+      background: var(--white);
+      transition: box-shadow 0.2s, transform 0.2s;
     }
+    .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
     .card-title {
       font-size: 12px;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 8px;
-      padding-bottom: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--border);
     }
-    .card-title .icon {
-      font-size: 16px;
-      margin-right: 6px;
-    }
-    .card ul {
-      list-style: none;
-      font-size: 12.5px;
-      color: var(--muted);
-    }
+    .card-title .icon { font-size: 16px; margin-right: 6px; }
+    .card ul { list-style: none; font-size: 12.5px; color: var(--muted); }
     .card ul li { padding: 3px 0; }
     .card ul li::before { content: '— '; color: var(--gold); }
 
-    /* Finance table */
+    /* ===================== HUB GRID ===================== */
+    .hub-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .hub-item {
+      background: var(--white);
+      padding: 24px 26px;
+      transition: background 0.2s;
+    }
+    .hub-item:hover { background: #fdf9f0; }
+    .hub-item-icon { font-size: 28px; margin-bottom: 10px; }
+    .hub-item-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .hub-item-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+    /* ===================== COMMUNITY ===================== */
+    .circles {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 24px 0;
+    }
+    .circle-item {
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.5;
+      padding: 10px;
+      background: var(--white);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .circle-item:hover { background: #fdf9f0; box-shadow: 0 4px 24px rgba(200,168,75,0.25); }
+    .circle-item .circle-icon { font-size: 22px; margin-bottom: 5px; }
+
+    /* ===================== SAUNA FLOW ===================== */
+    .sauna-flow {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin-top: 16px;
+    }
+    .sauna-flow-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .sauna-flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .sauna-flow-arrow { color: var(--gold); font-size: 16px; }
+    .sauna-flow-end { color: #c0392b; font-weight: 800; font-size: 15px; }
+    .sauna-flow-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+
+    /* ===================== REVENUE ===================== */
+    .revenue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .revenue-card {
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .revenue-card.year1 {
+      border: 2px solid var(--border);
+    }
+    .revenue-card.year2 {
+      border: 2px solid var(--gold);
+      background: linear-gradient(135deg, #fffdf5 0%, #fef9e7 100%);
+    }
+    .revenue-card .rev-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .revenue-card.year2 .rev-label { color: var(--gold); }
+    .revenue-card .rev-sub { font-size: 11px; color: var(--muted); margin-bottom: 16px; }
+    .revenue-card table { width: 100%; font-size: 12px; border-collapse: collapse; }
+    .revenue-card td { padding: 5px 0; }
+    .revenue-card td:first-child { color: var(--muted); }
+    .revenue-card td:last-child { text-align: right; font-weight: 600; }
+    .revenue-card .rev-total-row td {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .revenue-card .rev-total-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .revenue-card .rev-note {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    .revenue-card.year2 .rev-note { color: #5d8a3c; }
+
+    /* ===================== STAY PLANS ===================== */
+    .stay-plans-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* ===================== FINANCE TABLE ===================== */
     .finance-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .finance-table th {
       background: var(--navy);
-      color: #fff;
-      padding: 10px 14px;
+      color: var(--white);
+      padding: 12px 16px;
       text-align: left;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 11px;
+      letter-spacing: 0.5px;
     }
     .finance-table td {
-      padding: 10px 14px;
+      padding: 11px 16px;
       border-bottom: 1px solid var(--border);
     }
     .finance-table tr:last-child td { border-bottom: none; }
-    .finance-table tr:nth-child(even) td { background: #fafaf8; }
+    .finance-table tr:nth-child(even) td { background: #fafaf7; }
     .finance-table .amount {
       font-weight: 700;
       color: var(--navy);
       text-align: right;
     }
     .finance-table .total-row td {
-      background: #f0f0e8;
+      background: #f0ede4 !important;
       font-weight: 700;
       color: var(--navy);
+      font-size: 14px;
     }
 
-    /* Revenue projection */
-    .revenue-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .revenue-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 16px;
-      text-align: center;
-    }
-    .revenue-card .label { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-    .revenue-card .value { font-size: 22px; font-weight: 700; color: var(--navy); }
-    .revenue-card .unit { font-size: 11px; color: var(--muted); }
-    .revenue-card .note { font-size: 10px; color: var(--muted); margin-top: 6px; }
-
-    /* Synergy */
+    /* ===================== SYNERGY ===================== */
     .synergy {
-      background: #f9f8f4;
-      border-radius: 8px;
-      padding: 20px 24px;
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 24px 28px;
     }
     .synergy-row {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 14px;
+      margin-bottom: 16px;
       font-size: 13px;
+      line-height: 1.8;
     }
     .synergy-row:last-child { margin-bottom: 0; }
     .synergy-badge {
       background: var(--navy);
-      color: #fff;
+      color: var(--white);
       font-size: 10px;
       font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 3px 10px;
+      border-radius: 3px;
       white-space: nowrap;
-      margin-top: 2px;
+      margin-top: 3px;
+      letter-spacing: 0.5px;
     }
 
-    /* Action */
-    .action-list { list-style: none; }
+    /* ===================== LONGTERM ===================== */
+    .longterm {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 12px;
+      padding: 32px 36px;
+      color: var(--white);
+      font-size: 15px;
+      line-height: 2;
+    }
+    .longterm strong { color: var(--gold); }
+
+    /* ===================== ROADMAP ===================== */
+    .phase-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .action-list { list-style: none; margin-bottom: 28px; }
     .action-list li {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
-      padding: 12px 0;
+      gap: 16px;
+      padding: 13px 0;
       border-bottom: 1px solid var(--border);
       font-size: 13px;
     }
     .action-list li:last-child { border-bottom: none; }
     .action-num {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: var(--navy);
-      color: #fff;
+      color: var(--white);
       font-size: 11px;
       font-weight: 700;
       display: flex;
@@ -272,256 +628,213 @@
       margin-top: 1px;
     }
 
-    /* Manifesto */
-    .manifesto {
-      background: #0d1a2e;
-      padding: 56px 48px;
+    /* ===================== CTA SECTION ===================== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a6b 100%);
+      padding: 80px 56px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .manifesto-quote {
-      font-size: 22px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.8;
-      letter-spacing: 0.5px;
-      margin-bottom: 20px;
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(200,168,75,0.07);
     }
-    .manifesto-quote em {
-      color: var(--gold);
-      font-style: normal;
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(200,168,75,0.05);
     }
-    .manifesto-name {
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-      letter-spacing: 2px;
-    }
-
-    /* Gallery */
-    .gallery-section {
-      background: #0d1a2e;
-      padding: 40px 48px;
-    }
-    .gallery-label {
-      font-size: 11px;
-      letter-spacing: 3px;
+    .cta-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
       color: var(--gold);
       text-transform: uppercase;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
     }
-    .gallery-main {
-      width: 100%;
-      border-radius: 8px;
-      display: block;
-      max-height: 480px;
-      object-fit: cover;
-      margin-bottom: 12px;
-      cursor: pointer;
-    }
-    .gallery-thumbs {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    .gallery-thumb {
-      width: 100%;
-      border-radius: 6px;
-      display: block;
-      height: 160px;
-      object-fit: cover;
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .gallery-thumb:hover { opacity: 0.85; }
-    .gallery-caption {
-      font-size: 11px;
-      color: rgba(255,255,255,0.4);
-      margin-top: 12px;
-      text-align: center;
-      letter-spacing: 1px;
-    }
-
-    /* Profile */
-    .profile-section {
-      background: #fff;
-      padding: 48px 48px 40px;
-    }
-    .profile-intro {
-      font-size: 16px;
-      line-height: 2;
-      color: var(--navy);
-      margin-bottom: 32px;
-      font-weight: 500;
-    }
-    .profile-intro em {
-      color: var(--gold);
-      font-style: normal;
+    .cta-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 44px);
       font-weight: 700;
+      color: var(--white);
+      line-height: 1.4;
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
     }
-    .dna-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 28px;
-    }
-    .dna-item {
-      background: #fff;
-      padding: 18px 16px;
-      text-align: center;
-      transition: background 0.15s;
-    }
-    .dna-item:hover { background: #faf9f4; }
-    .dna-icon { font-size: 26px; margin-bottom: 8px; }
-    .dna-title { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 4px; line-height: 1.4; }
-    .dna-desc { font-size: 10px; color: var(--muted); line-height: 1.5; }
-    .dna-coming { opacity: 0.5; }
-    .philosophy-bar {
-      background: var(--navy);
-      border-radius: 8px;
-      padding: 20px 28px;
-      color: #fff;
+    .cta-heading em { color: var(--gold); font-style: normal; }
+    .cta-desc {
       font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 40px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
       line-height: 1.9;
+      position: relative;
+      z-index: 1;
     }
-    .philosophy-bar strong { color: var(--gold); }
-
-    /* Hub experiences */
-    .hub-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .hub-item {
-      background: #fff;
-      padding: 20px 22px;
-    }
-    .hub-item-icon { font-size: 24px; margin-bottom: 8px; }
-    .hub-item-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-    .hub-item-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-    /* Three circles */
-    .circles {
+    .cta-buttons {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      margin: 20px 0;
+      position: relative;
+      z-index: 1;
     }
-    .circle-item {
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      width: 110px;
-      height: 110px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    .cta-btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 16px 36px;
+      border-radius: 2px;
       font-size: 12px;
       font-weight: 700;
-      color: var(--navy);
-      line-height: 1.4;
-      padding: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
     }
-    .circle-item .circle-icon { font-size: 20px; margin-bottom: 4px; }
-
-    /* Long-term vision */
-    .longterm {
-      background: var(--navy);
-      border-radius: 8px;
-      padding: 24px 28px;
-      color: #fff;
-      font-size: 14px;
-      line-height: 2;
+    .cta-btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .cta-btn-secondary {
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      padding: 16px 36px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      display: inline-block;
     }
-    .longterm strong { color: var(--gold); }
+    .cta-btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .cta-sns {
+      margin-top: 40px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 1;
+    }
 
-    /* Footer */
+    /* ===================== FOOTER ===================== */
     .footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.5);
-      padding: 20px 48px;
+      background: #07101f;
+      color: rgba(255,255,255,0.4);
+      padding: 24px 56px;
       font-size: 11px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .footer strong { color: rgba(255,255,255,0.8); }
+    .footer strong { color: rgba(255,255,255,0.7); }
 
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 32px 0;
+    /* ===================== DIVIDER ===================== */
+    .divider { height: 1px; background: var(--border); margin: 40px 0; }
+
+    /* ===================== UTILITY ===================== */
+    .note-box {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 16px;
+      line-height: 1.9;
     }
 
+    /* ===================== RESPONSIVE ===================== */
     @media print {
       body { background: #fff; }
       .page { box-shadow: none; max-width: 100%; }
+      .hero { height: 50vh; }
+      .fade-in { opacity: 1; transform: none; }
     }
-
     @media (max-width: 640px) {
-      .header { padding: 28px 24px 24px; }
-      .content { padding: 28px 24px; }
-      .profile-section { padding: 32px 24px; }
-      .grid-2, .grid-3, .revenue-grid { grid-template-columns: 1fr; }
+      .hero-content { padding: 0 28px 40px; }
+      .manifesto { padding: 48px 28px; }
+      .profile-section,
+      .gallery-section,
+      .section-wrapper,
+      .cta-section { padding: 48px 24px; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .dna-grid { grid-template-columns: repeat(2, 1fr); }
-      .header-meta { gap: 20px; }
-      .footer { flex-direction: column; gap: 8px; }
+      .kpi-strip { grid-template-columns: 1fr; }
+      .revenue-grid { grid-template-columns: 1fr; }
+      .hub-grid { grid-template-columns: 1fr; }
+      .circles { gap: 12px; }
+      .sauna-flow-steps { gap: 8px; font-size: 12px; }
+      .footer { flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Vision Image -->
-  <div class="vision-section">
-    <img src="vision.png" alt="PROJECT TRITON BASE Vision" class="vision-img">
-    <div class="vision-overlay">
-      <div class="vision-tag">Vision Image</div>
-      <div class="vision-title">Outdoor Seminar Pavilion × Sauna × Tailgate Bar</div>
-      <div class="vision-sub">All-Weather Learning & Community Hub — up to 15 people</div>
+  <!-- ===== HERO ===== -->
+  <div class="hero">
+    <img src="vision.png" alt="PROJECT TRITON BASE Vision" class="hero-img" id="heroImg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">PROJECT TRITON BASE — 黒保根・赤城山麓 標高583m</div>
+      <h1 class="hero-title">
+        みんなの人生が<br>
+        <span>交差する場所</span>を<br>
+        作りに行く。
+      </h1>
+      <p class="hero-subtitle">群馬の山の中にサウナと鮨と焚き火がある秘密基地——2026年始動。</p>
+      <a href="#concept" class="hero-cta">詳細を見る</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Scroll
     </div>
   </div>
 
-  <!-- Gallery -->
-  <div class="gallery-section">
-    <div class="gallery-label">Project Vision Gallery</div>
-    <img src="base-overview.png" alt="PROJECT TRITON BASE 完成イメージ（俯瞰）" class="gallery-main">
-    <div class="gallery-thumbs">
-      <img src="sauna-night.png" alt="バレルサウナ × 水風呂（夜景）" class="gallery-thumb">
-      <img src="sauna-morning.png" alt="バレルサウナ × 水風呂（夜明け）" class="gallery-thumb">
-    </div>
-    <div class="gallery-caption">All images: AI-generated concept visualization / Gemini</div>
-  </div>
-
-  <!-- Manifesto -->
+  <!-- ===== MANIFESTO ===== -->
   <div class="manifesto">
-    <div class="manifesto-quote">
+    <div class="manifesto-quote fade-in">
       私はビジネスとプライベートを切り分けない。<br>
       全てが同じ延長線上の、<em>一つの人生</em>だ。<br><br>
       この場所は、<em>みんなの人生が交差する場所</em>にしたい。
     </div>
+    <div class="manifesto-line"></div>
     <div class="manifesto-name">— DAISUKE NAKAMURA</div>
   </div>
 
-  <!-- Profile -->
-  <div class="profile-section">
-    <div style="font-size:11px; letter-spacing:3px; color:var(--gold); font-weight:700; text-transform:uppercase; margin-bottom:16px;">The Person Behind This Project</div>
-    <div class="profile-intro">
-      薬剤師であり、eBay輸出のプロであり、AIコンサルタントであり、<em>津軽海峡でクロマグロを一本釣りする人間</em>が、<br>
+  <!-- ===== PROFILE ===== -->
+  <div class="profile-section" id="profile">
+    <div class="section-eyebrow fade-in">The Person Behind This Project</div>
+    <h2 class="section-heading fade-in fade-in-delay-1">
+      薬剤師であり、eBayのプロであり、<br>クロマグロを釣る寿司職人。
+    </h2>
+    <p class="profile-lead fade-in fade-in-delay-2">
+      津軽海峡でクロマグロを一本釣りし、<em>マイナス60度で熟成して自ら握る人間</em>が、<br>
       群馬の山の中に秘密基地を作ろうとしている。
-    </div>
+    </p>
 
-    <div class="dna-grid">
+    <div class="dna-grid fade-in">
       <div class="dna-item">
         <div class="dna-icon">💊</div>
         <div class="dna-title">薬剤師</div>
@@ -564,7 +877,7 @@
       </div>
     </div>
 
-    <div class="philosophy-bar">
+    <div class="philosophy-bar fade-in">
       トライトンでゲストを駅まで迎えに行く。それは<strong>接客であり、出会いであり、人脈であり、ビジネスチャンス</strong>だ。<br>
       釣り遠征は<strong>仕入れであり、冒険であり、コンテンツ</strong>だ。<br>
       黒保根BASEは<strong>自宅であり、事業拠点であり、みんなが集まる場所</strong>だ。<br><br>
@@ -572,506 +885,556 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <div class="header">
-    <div class="header-label">Business Plan Summary</div>
-    <h1>PROJECT TRITON BASE</h1>
-    <div class="header-sub">「みんなの人生が交差する場所」— 事業計画概要書</div>
-    <div class="header-meta">
-      <div class="header-meta-item">申請者<span>中村 大祐</span></div>
-      <div class="header-meta-item">事業形態<span>個人事業・法人</span></div>
-      <div class="header-meta-item">拠点<span>群馬県桐生市 黒保根町</span></div>
-      <div class="header-meta-item">作成日<span>2026年3月</span></div>
+  <!-- ===== GALLERY ===== -->
+  <div class="gallery-section">
+    <div class="section-eyebrow" style="color:var(--gold); margin-bottom:20px;">Project Vision Gallery</div>
+    <img src="base-overview.png" alt="PROJECT TRITON BASE 完成イメージ（俯瞰）" class="gallery-main fade-in">
+    <div class="gallery-thumbs">
+      <img src="sauna-night.png" alt="バレルサウナ × 水風呂（夜景）" class="gallery-thumb fade-in fade-in-delay-1">
+      <img src="sauna-morning.png" alt="バレルサウナ × 水風呂（夜明け）" class="gallery-thumb fade-in fade-in-delay-2">
+    </div>
+    <div class="gallery-caption">All images: AI-generated concept visualization / Gemini</div>
+  </div>
+
+  <!-- ===== CONCEPT ===== -->
+  <div class="section-wrapper" id="concept">
+    <div class="section-title fade-in">01 — Project Concept</div>
+    <div class="concept-box fade-in">
+      群馬県桐生市黒保根町・赤城山麓583mに、<strong>「人生が交差するハブ」</strong>を作る。<br><br>
+      マグロ解体ショー、寿司、ジビエ料理、薪サウナ、焚き火セミナー——<strong>自分がやりたいことをやる。</strong>それを友人に、スクールの仲間に、SNSで出会った人に提供する。<br><br>
+      収益は結果としてついてくる。仮にそうならなくても、<strong>自分が住む場所だからそれでいい。</strong><br>
+      ソーラーで電力を自給し、マイナス60度の冷凍庫でマグロとジビエを保存する。老後も一人でここで生きていける。
+    </div>
+
+    <div class="kpi-strip fade-in">
+      <div class="kpi-item">
+        <div class="kpi-label">総投資額</div>
+        <div><span class="kpi-value">1,985</span><span class="kpi-unit">万円</span></div>
+        <div class="kpi-note">トライトン除く</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-label">Year2+ 月次黒字</div>
+        <div><span class="kpi-value">+9.7</span><span class="kpi-unit">万円</span></div>
+        <div class="kpi-note">民泊・体験事業のみ</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-label">敷地面積</div>
+        <div><span class="kpi-value">350</span><span class="kpi-unit">坪</span></div>
+        <div class="kpi-note">1,183㎡ / 標高583m</div>
+      </div>
     </div>
   </div>
 
-  <div class="content">
+  <!-- ===== HUB EXPERIENCE ===== -->
+  <div class="section-wrapper alt">
+    <div class="section-title fade-in">02 — The Hub Experience</div>
+    <div class="hub-grid fade-in">
+      <div class="hub-item">
+        <div class="hub-item-icon">🐟</div>
+        <div class="hub-item-title">マグロ解体ショー</div>
+        <div class="hub-item-desc">本マグロを丸ごと一本。解体から握りまで、非日常の体験を目の前で。</div>
+      </div>
+      <div class="hub-item">
+        <div class="hub-item-icon">🍣</div>
+        <div class="hub-item-title">鮨体験（黒保根で握る）</div>
+        <div class="hub-item-desc">解体したマグロをその場で握る。山の中でしか味わえない、ここだけの鮨。</div>
+      </div>
+      <div class="hub-item">
+        <div class="hub-item-icon">🦌</div>
+        <div class="hub-item-title">狩猟・ジビエ（SNS発信中）</div>
+        <div class="hub-item-desc">わな猟免許取得の過程をリアルタイム発信。その姿を見たファンが会いに来る。</div>
+      </div>
+      <div class="hub-item">
+        <div class="hub-item-icon">🔥</div>
+        <div class="hub-item-title">薪サウナ × 焚き火</div>
+        <div class="hub-item-desc">バレルサウナで整い、焚き火を囲んで語る。赤城山麓の星空の下で。</div>
+      </div>
+      <div class="hub-item">
+        <div class="hub-item-icon">📡</div>
+        <div class="hub-item-title">屋外セミナー・合宿</div>
+        <div class="hub-item-desc">eBayスクール、ビジネス、人生設計。焚き火とプロジェクターで学ぶ非日常の場。</div>
+      </div>
+      <div class="hub-item">
+        <div class="hub-item-icon">🛻</div>
+        <div class="hub-item-title">トライトン・テールゲートバー</div>
+        <div class="hub-item-desc">荷台がバーになる。ウイスキーと料理を並べて、仲間と語り合う夜。</div>
+      </div>
+    </div>
+  </div>
 
-    <!-- 1. コンセプト -->
-    <div class="section">
-      <div class="section-title">01 — Project Concept</div>
-      <div class="concept-box">
-        群馬県桐生市黒保根町・赤城山麓583mに、<strong>「人生が交差するハブ」</strong>を作る。<br><br>
-        マグロ解体ショー、寿司、ジビエ料理、薪サウナ、焚き火セミナー——<strong>自分がやりたいことをやる。</strong>それを友人に、スクールの仲間に、SNSで出会った人に提供する。<br><br>
-        収益は結果としてついてくる。仮にそうならなくても、<strong>自分が住む場所だからそれでいい。</strong><br>
-        ソーラーで電力を自給し、マイナス60度の冷凍庫でマグロとジビエを保存する。老後も一人でここで生きていける。
+  <!-- ===== COMMUNITY ===== -->
+  <div class="section-wrapper">
+    <div class="section-title fade-in">03 — Community Circles</div>
+    <div class="circles fade-in">
+      <div class="circle-item"><div class="circle-icon">👥</div>桐生の<br>遊び仲間</div>
+      <div class="circle-item"><div class="circle-icon">📚</div>eBay<br>スクール仲間</div>
+      <div class="circle-item"><div class="circle-icon">📱</div>SNSで<br>出会った人</div>
+    </div>
+    <p style="text-align:center; font-size:13px; color:var(--muted); margin-top:8px;" class="fade-in">
+      この3つのサークルが黒保根で交差し、新しい人脈と体験が生まれる
+    </p>
+  </div>
+
+  <!-- ===== APPLICANT PROFILE ===== -->
+  <div class="section-wrapper alt">
+    <div class="section-title fade-in">04 — Applicant Profile</div>
+    <div class="grid-2 fade-in">
+      <div class="card">
+        <div class="card-title"><span class="icon">💼</span>既存事業（収益基盤）</div>
+        <ul>
+          <li>eBay輸出事業（海外向け EC）</li>
+          <li>eBayスクール（教育・コンサル）</li>
+          <li>システム開発（EAGLE 等）</li>
+          <li>出張寿司（料理人資格保有）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">🎯</span>新規事業（本計画）</div>
+        <ul>
+          <li>黒保根拠点の民泊運営（Airbnb）</li>
+          <li>ジビエ調達・販売（狩猟免許取得予定）</li>
+          <li>オフグリッド体験ツアー</li>
+          <li>黒保根での鮨体験（マグロ解体→握り）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== BASE & EQUIPMENT ===== -->
+  <div class="section-wrapper">
+    <div class="section-title fade-in">05 — Base & Equipment Plan</div>
+    <div class="grid-3 fade-in">
+      <div class="card">
+        <div class="card-title"><span class="icon">🏡</span>黒保根拠点（不動産）</div>
+        <ul>
+          <li>所在：群馬県桐生市黒保根町</li>
+          <li>標高：約600m・高台</li>
+          <li>土地：1,183㎡（約350坪）</li>
+          <li>建物：平家56㎡・築2008年</li>
+          <li>設備：電気・水道・浄化槽完備</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">⚡</span>エネルギー自給</div>
+        <ul>
+          <li>ソーラーパネル設置（南向き）</li>
+          <li>蓄電池システム導入</li>
+          <li>PC・通信環境を100%自給</li>
+          <li>冷凍庫稼働コスト削減</li>
+          <li>停電・BCP対策も兼ねる</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">🚛</span>事業用車両</div>
+        <ul>
+          <li>三菱トライトン LC2T型</li>
+          <li>GSRグレード（2024-25年式）</li>
+          <li>ヤマブキオレンジメタリック</li>
+          <li>最大積載750kg・4WD</li>
+          <li>スタッドレス装着（冬季対応）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SAUNA DESIGN ===== -->
+  <div class="section-wrapper alt">
+    <div class="section-title fade-in">05-A — Sauna Design</div>
+    <div class="grid-3 fade-in">
+      <div class="card">
+        <div class="card-title"><span class="icon">🛖</span>サウナ本体</div>
+        <ul>
+          <li><strong>totonoü 北欧産バレルサウナ 2.2m</strong></li>
+          <li>Pro Model / ひさし付き / 事業用</li>
+          <li>4〜6人用・耐用年数20年以上</li>
+          <li>本体価格：1,595,000円（税込）</li>
+          <li>LED・バケツ・ストーン・温度計付属</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">🔥</span>薪ストーブ</div>
+        <ul>
+          <li><strong>Cozy 12（薪式・別売）</strong></li>
+          <li>出力12kW・ロウリュ対応</li>
+          <li>価格：約250,000円</li>
+          <li>電気不要・完全オフグリッド</li>
+          <li>受注生産（要リードタイム）</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title"><span class="icon">💧</span>水風呂</div>
+        <ul>
+          <li><strong>木製タル型 + チラー（冷却機）</strong></li>
+          <li>ヒノキ製タル（直径1.2m）</li>
+          <li>ゼンスイ製チラーで14〜17℃管理</li>
+          <li>冬季は積雪への外気浴で代替</li>
+          <li>湧水・地下水があれば理想</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sauna-flow fade-in">
+      <div class="sauna-flow-label">SAUNA EXPERIENCE FLOW</div>
+      <div class="sauna-flow-steps">
+        <span>薪サウナ 90℃</span>
+        <span class="sauna-flow-arrow">→</span>
+        <span>水風呂 15℃（冬は雪ダイブ）</span>
+        <span class="sauna-flow-arrow">→</span>
+        <span>外気浴（赤城山麓の空気）</span>
+        <span class="sauna-flow-arrow">→</span>
+        <span class="sauna-flow-end">ととのう</span>
+      </div>
+      <div class="sauna-flow-note">冬季は積雪を活用した「雪ダイブ」体験が可能。標高583mの外気浴は都市部サウナでは絶対に再現できない体験。</div>
+    </div>
+  </div>
+
+  <!-- ===== REVENUE ===== -->
+  <div class="section-wrapper">
+    <div class="section-title fade-in">06 — Stay Plans & Revenue Projection</div>
+
+    <div class="stay-plans-label fade-in">STAY PLANS</div>
+    <div class="hub-grid fade-in" style="margin-bottom:28px;">
+      <div class="hub-item">
+        <div class="hub-item-icon">🏠</div>
+        <div class="hub-item-title">素泊まりプラン（ベース）</div>
+        <div class="hub-item-desc">サウナ・デッキ・焚き火が使い放題。<br><strong style="color:var(--navy);">1.5〜2万円 / 泊</strong></div>
+      </div>
+      <div class="hub-item">
+        <div class="hub-item-icon">🍣</div>
+        <div class="hub-item-title">鮨付きプラン（オプション）</div>
+        <div class="hub-item-desc">寿司職人・中村が握る本格鮨。マグロ解体〜フルコースも可。<br><strong style="color:var(--navy);">＋2〜3万円</strong></div>
+      </div>
+      <div class="hub-item">
+        <div class="hub-item-icon">🥩</div>
+        <div class="hub-item-title">BBQ肉セットプラン（オプション）</div>
+        <div class="hub-item-desc">地元の信頼できる肉屋から仕入れた厳選肉。<br><strong style="color:var(--navy);">＋1〜1.5万円</strong></div>
+      </div>
+      <div class="hub-item" style="opacity:0.65;">
+        <div class="hub-item-icon">🦌</div>
+        <div class="hub-item-title">狩猟体験プラン（将来）</div>
+        <div class="hub-item-desc">わな猟免許取得後に解禁。<br><strong style="color:var(--muted); font-size:11px;">現在はSNS発信フェーズ</strong></div>
       </div>
     </div>
 
-    <!-- 1.5 Hub体験 -->
-    <div class="section">
-      <div class="section-title">02 — The Hub Experience</div>
-      <div class="hub-grid">
-        <div class="hub-item">
-          <div class="hub-item-icon">🐟</div>
-          <div class="hub-item-title">マグロ解体ショー</div>
-          <div class="hub-item-desc">本マグロを丸ごと一本。解体から握りまで、非日常の体験を目の前で。</div>
-        </div>
-        <div class="hub-item">
-          <div class="hub-item-icon">🍣</div>
-          <div class="hub-item-title">鮨体験（黒保根で握る）</div>
-          <div class="hub-item-desc">解体したマグロをその場で握る。山の中でしか味わえない、ここだけの鮨。</div>
-        </div>
-        <div class="hub-item">
-          <div class="hub-item-icon">🦌</div>
-          <div class="hub-item-title">狩猟・ジビエ（SNS発信中）</div>
-          <div class="hub-item-desc">わな猟免許取得の過程をリアルタイム発信。その姿を見たファンが会いに来る。免許取得後は体験プランへ昇華。</div>
-        </div>
-        <div class="hub-item">
-          <div class="hub-item-icon">🔥</div>
-          <div class="hub-item-title">薪サウナ × 焚き火</div>
-          <div class="hub-item-desc">バレルサウナで整い、焚き火を囲んで語る。赤城山麓の星空の下で。</div>
-        </div>
-        <div class="hub-item">
-          <div class="hub-item-icon">📡</div>
-          <div class="hub-item-title">屋外セミナー・合宿</div>
-          <div class="hub-item-desc">eBayスクール、ビジネス、人生設計。焚き火とプロジェクターで学ぶ非日常の場。</div>
-        </div>
-        <div class="hub-item">
-          <div class="hub-item-icon">🛻</div>
-          <div class="hub-item-title">トライトン・テールゲートバー</div>
-          <div class="hub-item-desc">荷台がバーになる。ウイスキーと料理を並べて、仲間と語り合う夜。</div>
-        </div>
+    <div class="revenue-grid fade-in">
+      <div class="revenue-card year1">
+        <div class="rev-label">YEAR 1（立ち上げ期）</div>
+        <div class="rev-sub">レビュー構築・SNS認知拡大フェーズ</div>
+        <table>
+          <tr><td>素泊まりプラン（月4泊）</td><td>7万円</td></tr>
+          <tr><td>鮨付きオプション（月2回）</td><td>5万円</td></tr>
+          <tr><td>BBQ肉セット（月2回）</td><td>2万円</td></tr>
+          <tr class="rev-total-row">
+            <td>合計</td>
+            <td><span class="rev-total-amount">約14</span>万円</td>
+          </tr>
+        </table>
+        <div class="rev-note">返済14.3万円との差額はほぼトントン</div>
+      </div>
+      <div class="revenue-card year2">
+        <div class="rev-label">YEAR 2+（安定期）</div>
+        <div class="rev-sub">リピーター定着・SNSファン来訪フェーズ</div>
+        <table>
+          <tr><td>素泊まりプラン（月6泊）</td><td>10万円</td></tr>
+          <tr><td>鮨付きオプション（月4回）</td><td>10万円</td></tr>
+          <tr><td>BBQ肉セット（月3回）</td><td>4万円</td></tr>
+          <tr class="rev-total-row">
+            <td>合計</td>
+            <td><span class="rev-total-amount">約24</span>万円</td>
+          </tr>
+        </table>
+        <div class="rev-note">返済14.3万円差し引きで月 <strong>+9.7万円</strong></div>
       </div>
     </div>
-
-    <!-- コミュニティ -->
-    <div class="section">
-      <div class="section-title">03 — Community Circles</div>
-      <div class="circles">
-        <div class="circle-item"><div class="circle-icon">👥</div>桐生の<br>遊び仲間</div>
-        <div class="circle-item"><div class="circle-icon">📚</div>eBay<br>スクール仲間</div>
-        <div class="circle-item"><div class="circle-icon">📱</div>SNSで<br>出会った人</div>
-      </div>
-      <div style="text-align:center; font-size:13px; color:var(--muted); margin-top:8px;">
-        この3つのサークルが黒保根で交差し、新しい人脈と体験が生まれる
-      </div>
+    <div class="note-box fade-in">
+      ※ eBay輸出・eBayスクール・システム開発の既存収益は含まない。<br>
+      ※ ジビエは現時点では収益項目に含まない。SNS発信（狩猟取得過程）→ファン来訪という流れで民泊稼働率を高める役割。<br>
+      ※ 冬季（12〜3月）はサウナ・雪体験需要増で単価アップ見込み。サウナ付き一棟貸し相場2〜5万円/泊。
     </div>
+  </div>
 
-    <!-- 2. 事業者プロフィール -->
-    <div class="section">
-      <div class="section-title">04 — Applicant Profile</div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-title"><span class="icon">💼</span>既存事業（収益基盤）</div>
-          <ul>
-            <li>eBay輸出事業（海外向け EC）</li>
-            <li>eBayスクール（教育・コンサル）</li>
-            <li>システム開発（EAGLE 等）</li>
-            <li>出張寿司（料理人資格保有）</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">🎯</span>新規事業（本計画）</div>
-          <ul>
-            <li>黒保根拠点の民泊運営（Airbnb）</li>
-            <li>ジビエ調達・販売（狩猟免許取得予定）</li>
-            <li>オフグリッド体験ツアー</li>
-            <li>黒保根での鮨体験（マグロ解体→その場で握り）</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <!-- ===== FINANCING ===== -->
+  <div class="section-wrapper alt">
+    <div class="section-title fade-in">07 — Financing Plan</div>
 
-    <!-- 3. 拠点・設備計画 -->
-    <div class="section">
-      <div class="section-title">05 — Base & Equipment Plan</div>
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-title"><span class="icon">🏡</span>黒保根拠点（不動産）</div>
-          <ul>
-            <li>所在：群馬県桐生市黒保根町</li>
-            <li>標高：約600m・高台</li>
-            <li>土地：1,183㎡（約350坪）</li>
-            <li>建物：平家56㎡・築2008年</li>
-            <li>設備：電気・水道・浄化槽完備</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">⚡</span>エネルギー自給</div>
-          <ul>
-            <li>ソーラーパネル設置（南向き）</li>
-            <li>蓄電池システム導入</li>
-            <li>PC・通信環境を100%自給</li>
-            <li>冷凍庫稼働コスト削減</li>
-            <li>停電・BCP対策も兼ねる</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">🚛</span>事業用車両</div>
-          <ul>
-            <li>三菱トライトン LC2T型</li>
-            <li>GSRグレード（2024-25年式）</li>
-            <li>ヤマブキオレンジメタリック</li>
-            <li>最大積載750kg・4WD</li>
-            <li>スタッドレス装着（冬季対応）</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <table class="finance-table fade-in">
+      <thead>
+        <tr>
+          <th>カテゴリ</th>
+          <th>項目</th>
+          <th style="text-align:right">金額（万円）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="3" style="font-weight:700; color:var(--navy); background:#f5f5f0;">不動産</td>
+          <td>物件取得（土地・建物）</td>
+          <td class="amount">980</td>
+        </tr>
+        <tr>
+          <td>擁壁工事（買主負担分）</td>
+          <td class="amount">180</td>
+        </tr>
+        <tr>
+          <td>不動産取得税・登記・司法書士費用</td>
+          <td class="amount">60</td>
+        </tr>
+        <tr>
+          <td rowspan="7" style="font-weight:700; color:var(--navy); background:#f5f5f0;">設備・工事</td>
+          <td>既存建物リノベ・内装・民泊整備</td>
+          <td class="amount">60</td>
+        </tr>
+        <tr>
+          <td>ソーラーパネル・蓄電池</td>
+          <td class="amount">150</td>
+        </tr>
+        <tr>
+          <td>屋外テラス・デッキ新設（セミナーパビリオン）</td>
+          <td class="amount">150</td>
+        </tr>
+        <tr>
+          <td>バレルサウナ本体（totonoü 2.2m Pro Model / ひさし付き / 事業用）</td>
+          <td class="amount">160</td>
+        </tr>
+        <tr>
+          <td>薪ストーブ（Cozy 12 / 12kW / 別売）</td>
+          <td class="amount">25</td>
+        </tr>
+        <tr>
+          <td>水風呂・外気浴設備（ヒノキタル + ゼンスイ チラー）</td>
+          <td class="amount">100</td>
+        </tr>
+        <tr>
+          <td>サウナ基礎・設置工事</td>
+          <td class="amount">30</td>
+        </tr>
+        <tr>
+          <td>超低温冷凍庫（既保有・移設のみ）</td>
+          <td class="amount">10</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700; color:var(--navy); background:#f5f5f0;">予備費</td>
+          <td>設計変更・想定外工事・諸雑費（10%）</td>
+          <td class="amount">80</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2">総投資額（概算）</td>
+          <td class="amount" style="font-size:16px;">1,985</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="font-size:11px; color:var(--muted); padding:10px 16px; background:#fafaf8;">
+            ※ 三菱トライトン（約575万円）はeBay輸出事業の仕入れ・運搬用途として別途計上。同事業の収益から返済。本プロジェクトの財務管理には含まない。
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <!-- サウナ詳細設計 -->
-    <div class="section">
-      <div class="section-title">05-A — Sauna Design</div>
-      <div class="grid-3">
-        <div class="card">
-          <div class="card-title"><span class="icon">🛖</span>サウナ本体</div>
-          <ul>
-            <li><strong>totonoü 北欧産バレルサウナ 2.2m</strong></li>
-            <li>Pro Model / ひさし付き / 事業用</li>
-            <li>4〜6人用・耐用年数20年以上</li>
-            <li>本体価格：1,595,000円（税込）</li>
-            <li>LED・バケツ・ストーン・温度計付属</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">🔥</span>薪ストーブ</div>
-          <ul>
-            <li><strong>Cozy 12（薪式・別売）</strong></li>
-            <li>出力12kW・ロウリュ対応</li>
-            <li>価格：約250,000円</li>
-            <li>電気不要・完全オフグリッド</li>
-            <li>受注生産（要リードタイム）</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title"><span class="icon">💧</span>水風呂</div>
-          <ul>
-            <li><strong>木製タル型 + チラー（冷却機）</strong></li>
-            <li>ヒノキ製タル（直径1.2m）</li>
-            <li>ゼンスイ製チラーで14〜17℃管理</li>
-            <li>冬季は積雪への外気浴で代替</li>
-            <li>湧水・地下水があれば理想</li>
-          </ul>
-        </div>
-      </div>
-
-      <div style="margin-top:16px; background:#f9f8f4; border-radius:8px; padding:20px 24px;">
-        <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">SAUNA EXPERIENCE FLOW</div>
-        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; color:var(--navy); font-weight:600;">
-          <span>薪サウナ 90℃</span>
-          <span style="color:var(--gold)">→</span>
-          <span>水風呂 15℃（冬は雪）</span>
-          <span style="color:var(--gold)">→</span>
-          <span>外気浴（赤城山麓の空気）</span>
-          <span style="color:var(--gold)">→</span>
-          <span style="color:#c0392b; font-weight:700;">ととのう</span>
-        </div>
-        <div style="margin-top:10px; font-size:12px; color:var(--muted);">
-          冬季は積雪を活用した「雪ダイブ」体験が可能。標高583mの外気浴は都市部サウナでは絶対に再現できない体験。
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. 収益計画 -->
-    <div class="section">
-      <div class="section-title">06 — Stay Plans & Revenue Projection</div>
-
-      <!-- プラン設計 -->
-      <div style="margin-bottom:20px;">
-        <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">STAY PLANS</div>
-        <div class="hub-grid">
-          <div class="hub-item">
-            <div class="hub-item-icon">🏠</div>
-            <div class="hub-item-title">素泊まりプラン（ベース）</div>
-            <div class="hub-item-desc">サウナ・デッキ・焚き火が使い放題。自分の時間を自分のペースで。<br><span style="font-weight:700; color:var(--navy);">1.5〜2万円 / 泊</span></div>
-          </div>
-          <div class="hub-item">
-            <div class="hub-item-icon">🍣</div>
-            <div class="hub-item-title">鮨付きプラン（オプション）</div>
-            <div class="hub-item-desc">寿司職人・中村が握る本格鮨。マグロ解体からのフルコース体験も可。<br><span style="font-weight:700; color:var(--navy);">＋2〜3万円</span></div>
-          </div>
-          <div class="hub-item">
-            <div class="hub-item-icon">🥩</div>
-            <div class="hub-item-title">BBQ肉セットプラン（オプション）</div>
-            <div class="hub-item-desc">地元の信頼できる肉屋から仕入れた厳選肉をセットで提供。<br><span style="font-weight:700; color:var(--navy);">＋1〜1.5万円</span></div>
-          </div>
-          <div class="hub-item" style="opacity:0.7;">
-            <div class="hub-item-icon">🦌</div>
-            <div class="hub-item-title">狩猟体験プラン（将来）</div>
-            <div class="hub-item-desc">わな猟免許取得後に解禁。罠設置〜解体〜調理まで。SNS発信を見たファンが集まるコンテンツ。<br><span style="font-weight:700; color:var(--muted); font-size:11px;">現在はSNS発信フェーズ</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 収益シミュレーション -->
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
-        <div style="border:2px solid var(--border); border-radius:8px; padding:16px;">
-          <div style="font-size:11px; font-weight:700; color:var(--muted); letter-spacing:2px; margin-bottom:12px;">YEAR 1（立ち上げ期）</div>
-          <div style="font-size:11px; color:var(--muted); margin-bottom:8px;">レビュー構築・SNS認知拡大フェーズ</div>
-          <table style="width:100%; font-size:12px; border-collapse:collapse;">
-            <tr><td style="padding:4px 0; color:var(--muted)">素泊まりプラン（月4泊）</td><td style="text-align:right; font-weight:600;">7万円</td></tr>
-            <tr><td style="padding:4px 0; color:var(--muted)">鮨付きオプション（月2回）</td><td style="text-align:right; font-weight:600;">5万円</td></tr>
-            <tr><td style="padding:4px 0; color:var(--muted)">BBQ肉セット（月2回）</td><td style="text-align:right; font-weight:600;">2万円</td></tr>
-            <tr style="border-top:1px solid var(--border);"><td style="padding:6px 0 2px; font-weight:700;">合計</td><td style="text-align:right; font-weight:700; color:var(--navy); font-size:15px;">約14万円</td></tr>
-          </table>
-          <div style="margin-top:8px; font-size:10px; color:var(--muted);">返済14.3万円との差額0.3万円はほぼトントン</div>
-        </div>
-        <div style="border:2px solid var(--gold); border-radius:8px; padding:16px;">
-          <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">YEAR 2+（安定期）</div>
-          <div style="font-size:11px; color:var(--muted); margin-bottom:8px;">リピーター定着・SNSファン来訪フェーズ</div>
-          <table style="width:100%; font-size:12px; border-collapse:collapse;">
-            <tr><td style="padding:4px 0; color:var(--muted)">素泊まりプラン（月6泊）</td><td style="text-align:right; font-weight:600;">10万円</td></tr>
-            <tr><td style="padding:4px 0; color:var(--muted)">鮨付きオプション（月4回）</td><td style="text-align:right; font-weight:600;">10万円</td></tr>
-            <tr><td style="padding:4px 0; color:var(--muted)">BBQ肉セット（月3回）</td><td style="text-align:right; font-weight:600;">4万円</td></tr>
-            <tr style="border-top:1px solid var(--border);"><td style="padding:6px 0 2px; font-weight:700;">合計</td><td style="text-align:right; font-weight:700; color:var(--navy); font-size:15px;">約24万円</td></tr>
-          </table>
-          <div style="margin-top:8px; font-size:10px; color:var(--muted);">返済14.3万円差し引きで月+9.7万円</div>
-        </div>
-      </div>
-
-      <div style="background:#f9f8f4; border-radius:8px; padding:16px 20px; font-size:12px; color:var(--muted);">
-        ※ eBay輸出・eBayスクール・システム開発の既存収益は含まない。<br>
-        ※ ジビエは現時点では収益項目に含まない。SNS発信（狩猟取得過程）→ファン来訪という流れで民泊稼働率を高める役割。<br>
-        ※ 冬季（12〜3月）はサウナ・雪体験需要増で単価アップ見込み。サウナ付き一棟貸し相場2〜5万円/泊（BEST OF VILLA with SAUNA 2025）。
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- 5. 資金計画 -->
-    <div class="section">
-      <div class="section-title">07 — Financing Plan</div>
-
+    <div style="margin-top:28px;" class="fade-in">
+      <div class="stay-plans-label">REPAYMENT SIMULATION</div>
       <table class="finance-table">
         <thead>
           <tr>
-            <th>カテゴリ</th>
-            <th>項目</th>
-            <th style="text-align:right">金額（万円）</th>
+            <th>ローン種別</th>
+            <th>借入先</th>
+            <th style="text-align:right">借入額</th>
+            <th style="text-align:right">条件</th>
+            <th style="text-align:right">月返済額</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td rowspan="3" style="font-weight:700; color:var(--navy); background:#f5f5f0;">不動産</td>
-            <td>物件取得（土地・建物）</td>
-            <td class="amount">980</td>
+            <td>不動産ローン</td>
+            <td>桐生信用金庫</td>
+            <td class="amount">1,160万円</td>
+            <td style="text-align:right; font-size:12px; color:var(--muted)">20年/1.5%</td>
+            <td class="amount">約5.7万円</td>
           </tr>
           <tr>
-            <td>擁壁工事（買主負担分）</td>
-            <td class="amount">180</td>
-          </tr>
-          <tr>
-            <td>不動産取得税・登記・司法書士費用</td>
-            <td class="amount">60</td>
-          </tr>
-          <tr>
-            <td rowspan="7" style="font-weight:700; color:var(--navy); background:#f5f5f0;">設備・工事</td>
-            <td>既存建物リノベ・内装・民泊整備</td>
-            <td class="amount">60</td>
-          </tr>
-          <tr>
-            <td>ソーラーパネル・蓄電池</td>
-            <td class="amount">150</td>
-          </tr>
-          <tr>
-            <td>屋外テラス・デッキ新設（セミナーパビリオン）</td>
-            <td class="amount">150</td>
-          </tr>
-          <tr>
-            <td>バレルサウナ本体（totonoü 2.2m Pro Model / ひさし付き / 事業用）</td>
-            <td class="amount">160</td>
-          </tr>
-          <tr>
-            <td>薪ストーブ（Cozy 12 / 12kW / 別売）</td>
-            <td class="amount">25</td>
-          </tr>
-          <tr>
-            <td>水風呂・外気浴設備（ヒノキタル + ゼンスイ チラー）</td>
-            <td class="amount">100</td>
-          </tr>
-          <tr>
-            <td>サウナ基礎・設置工事</td>
-            <td class="amount">30</td>
-          </tr>
-          <tr>
-            <td>超低温冷凍庫（既保有・移設のみ）</td>
-            <td class="amount">10</td>
-          </tr>
-          <tr>
-            <td style="font-weight:700; color:var(--navy); background:#f5f5f0;">予備費</td>
-            <td>設計変更・想定外工事・諸雑費（10%）</td>
-            <td class="amount">80</td>
+            <td>設備資金</td>
+            <td>日本政策金融公庫</td>
+            <td class="amount">685万円</td>
+            <td style="text-align:right; font-size:12px; color:var(--muted)">7年/1.5%</td>
+            <td class="amount">約8.6万円</td>
           </tr>
           <tr class="total-row">
-            <td colspan="2">総投資額（概算）</td>
-            <td class="amount">1,985</td>
-          </tr>
-          <tr>
-            <td colspan="3" style="font-size:11px; color:var(--muted); padding:10px 14px; background:#fafaf8;">
-              ※ 三菱トライトン（約575万円）はeBay輸出事業の仕入れ・運搬用途として別途計上。同事業の収益から返済。本プロジェクトの財務管理には含まない。
-            </td>
+            <td colspan="2">月次返済合計</td>
+            <td class="amount">1,845万円</td>
+            <td></td>
+            <td class="amount">約14.3万円</td>
           </tr>
         </tbody>
       </table>
-
-      <div style="margin-top:24px;">
-        <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:14px;">REPAYMENT SIMULATION</div>
-        <table class="finance-table">
-          <thead>
-            <tr>
-              <th>ローン種別</th>
-              <th>借入先</th>
-              <th style="text-align:right">借入額</th>
-              <th style="text-align:right">条件</th>
-              <th style="text-align:right">月返済額</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>不動産ローン</td>
-              <td>桐生信用金庫</td>
-              <td class="amount">1,160万円</td>
-              <td style="text-align:right; font-size:12px; color:var(--muted)">20年/1.5%</td>
-              <td class="amount">約5.7万円</td>
-            </tr>
-            <tr>
-              <td>設備資金</td>
-              <td>日本政策金融公庫</td>
-              <td class="amount">685万円</td>
-              <td style="text-align:right; font-size:12px; color:var(--muted)">7年/1.5%</td>
-              <td class="amount">約8.6万円</td>
-            </tr>
-            <tr class="total-row">
-              <td colspan="2">月次返済合計</td>
-              <td class="amount">1,845万円</td>
-              <td></td>
-              <td class="amount">約14.3万円</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style="margin-top:10px; font-size:11px; color:var(--muted);">
-          ※ 諸費用（取得税・登記・予備費 約140万円）は自己資金で対応。<br>
-          ※ 月次収益31万円（安定期）− 返済14.3万円 ＝ <strong>月+16.7万円</strong>（新規事業のみ）。eBay既存収益は別途。<br>
-          ※ Year1（立ち上げ期）は収益約10万円のため、差額4.3万円はeBay収益でカバー。<br>
-          ※ 三菱トライトンの融資・返済はeBay輸出事業で独立管理。
-        </div>
+      <div class="note-box">
+        ※ 諸費用（取得税・登記・予備費 約140万円）は自己資金で対応。<br>
+        ※ Year2+（安定期）：月次収益24万円 − 返済14.3万円 ＝ <strong>月+9.7万円</strong>（新規事業のみ）。eBay既存収益は別途。<br>
+        ※ Year1（立ち上げ期）は収益約14万円のため、ほぼトントン。差額はeBay収益でカバー。<br>
+        ※ 三菱トライトンの融資・返済はeBay輸出事業で独立管理。
       </div>
     </div>
-
-    <!-- 6. シナジー効果 -->
-    <div class="section">
-      <div class="section-title">08 — Business Synergy</div>
-      <div class="synergy">
-        <div class="synergy-row">
-          <div class="synergy-badge">節税</div>
-          <div>eBay事業の利益をトライトン（法人車両）・黒保根拠点（事業用）への投資に充当。<strong>定率法減価償却・消費税還付</strong>で実質コストを大幅圧縮。</div>
-        </div>
-        <div class="synergy-row">
-          <div class="synergy-badge">物流</div>
-          <div>トライトンの荷台が<strong>物流基地</strong>として機能。マグロ・ジビエの搬送、民泊備品の運搬、山林フィールドへの機材輸送をすべて一台で完結。</div>
-        </div>
-        <div class="synergy-row">
-          <div class="synergy-badge">ブランド</div>
-          <div>「あばれる君」も開拓する黒保根エリアの話題性を活用。<strong>SNS・YouTube</strong>での発信でブランド価値を高め、民泊・体験の集客に繋げる。</div>
-        </div>
-        <div class="synergy-row">
-          <div class="synergy-badge">自給</div>
-          <div>ソーラー発電で電力コスト削減、狩猟でジビエ調達、家庭菜園で食材確保。<strong>固定費・食費の大幅削減</strong>で可処分所得が増加。</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 長期ビジョン -->
-    <div class="section">
-      <div class="section-title">09 — Long-term Vision</div>
-      <div class="longterm">
-        <strong>ソーラー発電</strong>で電力を完全自給。<strong>マイナス60度冷凍庫</strong>でマグロとジビエを長期保存。<br>
-        固定費を限りなくゼロに近づけ、<strong>老後も一人でここで生きていける</strong>インフラを今のうちに作る。<br><br>
-        収益が上がればうれしい。上がらなくても、ここに住む。<br>
-        <strong>この場所自体が、人生の答えだ。</strong>
-      </div>
-    </div>
-
-    <!-- 7. 実行ロードマップ -->
-    <div class="section">
-      <div class="section-title">10 — Action Roadmap</div>
-
-      <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">PHASE 0｜今すぐ動く</div>
-      <ul class="action-list" style="margin-bottom:24px;">
-        <li>
-          <div class="action-num">1</div>
-          <div><strong>物件見学</strong>｜黒保根物件の現地視察（03-3351-5601 / 物件番号17735T）。<strong>建築士を同行</strong>し、地目・接道・増築可否・擁壁状態を確認</div>
-        </li>
-        <li>
-          <div class="action-num">2</div>
-          <div><strong>融資打診</strong>｜本計画書を持参し、きりしん（不動産ローン）・日本政策金融公庫（設備資金）にアポを取る</div>
-        </li>
-        <li>
-          <div class="action-num">3</div>
-          <div><strong>サウナ発注</strong>｜totonoü 2.2m Pro Model（受注生産のため早めに問い合わせ）。ストーブ Cozy 12 も合わせて確認</div>
-        </li>
-        <li>
-          <div class="action-num">4</div>
-          <div><strong>発信スタート</strong>｜「黒保根に秘密基地を作る」を今すぐSNSで宣言。物件見学・狩猟ワークショップなど過程からコンテンツ化</div>
-        </li>
-        <li>
-          <div class="action-num">5</div>
-          <div><strong>車両調達</strong>｜Garage 藤掛屋にトライトン（24-25年式 GSR・ヤマブキ・モール付）をオークション代行依頼（eBay事業予算で別途）</div>
-        </li>
-      </ul>
-
-      <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">PHASE 1｜物件取得〜開業準備</div>
-      <ul class="action-list" style="margin-bottom:24px;">
-        <li>
-          <div class="action-num">6</div>
-          <div><strong>契約・取得</strong>｜売買契約・融資実行・登記。不動産取得税・司法書士費用は自己資金で対応</div>
-        </li>
-        <li>
-          <div class="action-num">7</div>
-          <div><strong>工事発注</strong>｜リノベ・テラス・サウナ・ソーラーの施工業者を選定。<strong>桐生市の工務店</strong>を優先（地域との関係構築にもなる）</div>
-        </li>
-        <li>
-          <div class="action-num">8</div>
-          <div><strong>保険切替</strong>｜火災保険を民泊対応プランに変更。民泊向け賠償責任保険に加入（月数千円〜）</div>
-        </li>
-        <li>
-          <div class="action-num">9</div>
-          <div><strong>スマートロック設置</strong>｜SESAME・SADIOT等を導入。都心からの遠隔チェックイン対応</div>
-        </li>
-      </ul>
-
-      <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">PHASE 2｜開業</div>
-      <ul class="action-list" style="margin-bottom:24px;">
-        <li>
-          <div class="action-num">10</div>
-          <div><strong>消防検査</strong>｜消防署に連絡し、消火器・火災警報器の設置確認 → <strong>消防法令適合通知書</strong>を取得</div>
-        </li>
-        <li>
-          <div class="action-num">11</div>
-          <div><strong>民泊届出</strong>｜群馬県知事へ住宅宿泊事業法の届出（登記簿謄本・間取り図・本人確認書類 等）。準備期間1〜2ヶ月</div>
-        </li>
-        <li>
-          <div class="action-num">12</div>
-          <div><strong>Airbnb登録</strong>｜届出番号を取得後にAirbnbへ登録。素泊まり・鮨付き・BBQ肉セットのプランを設定</div>
-        </li>
-        <li>
-          <div class="action-num">13</div>
-          <div><strong>近隣挨拶</strong>｜開業前に近隣住民・自治会への挨拶。桐生の友人ネットワークを通じて地域に溶け込む</div>
-        </li>
-      </ul>
-
-      <div style="font-size:11px; font-weight:700; color:var(--gold); letter-spacing:2px; margin-bottom:12px;">PHASE 3｜将来</div>
-      <ul class="action-list">
-        <li>
-          <div class="action-num">14</div>
-          <div><strong>狩猟免許取得</strong>｜わな猟免許 → 黒保根エリアの猟友会と連携 → 狩猟体験プランの提供開始</div>
-        </li>
-        <li>
-          <div class="action-num">15</div>
-          <div><strong>Airbnb拡張</strong>｜黒保根の稼働実績を元に2棟目（古民家・山小屋等）の取得検討。体験型民泊のブランド横展開</div>
-        </li>
-      </ul>
-    </div>
-
   </div>
 
-  <!-- Footer -->
+  <!-- ===== SYNERGY ===== -->
+  <div class="section-wrapper">
+    <div class="section-title fade-in">08 — Business Synergy</div>
+    <div class="synergy fade-in">
+      <div class="synergy-row">
+        <div class="synergy-badge">節税</div>
+        <div>eBay事業の利益をトライトン（法人車両）・黒保根拠点（事業用）への投資に充当。<strong>定率法減価償却・消費税還付</strong>で実質コストを大幅圧縮。</div>
+      </div>
+      <div class="synergy-row">
+        <div class="synergy-badge">物流</div>
+        <div>トライトンの荷台が<strong>物流基地</strong>として機能。マグロ・ジビエの搬送、民泊備品の運搬、山林フィールドへの機材輸送をすべて一台で完結。</div>
+      </div>
+      <div class="synergy-row">
+        <div class="synergy-badge">ブランド</div>
+        <div>「あばれる君」も開拓する黒保根エリアの話題性を活用。<strong>SNS・YouTube</strong>での発信でブランド価値を高め、民泊・体験の集客に繋げる。</div>
+      </div>
+      <div class="synergy-row">
+        <div class="synergy-badge">自給</div>
+        <div>ソーラー発電で電力コスト削減、狩猟でジビエ調達、家庭菜園で食材確保。<strong>固定費・食費の大幅削減</strong>で可処分所得が増加。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LONG-TERM ===== -->
+  <div class="section-wrapper alt">
+    <div class="section-title fade-in">09 — Long-term Vision</div>
+    <div class="longterm fade-in">
+      <strong>ソーラー発電</strong>で電力を完全自給。<strong>マイナス60度冷凍庫</strong>でマグロとジビエを長期保存。<br>
+      固定費を限りなくゼロに近づけ、<strong>老後も一人でここで生きていける</strong>インフラを今のうちに作る。<br><br>
+      収益が上がればうれしい。上がらなくても、ここに住む。<br>
+      <strong>この場所自体が、人生の答えだ。</strong>
+    </div>
+  </div>
+
+  <!-- ===== ROADMAP ===== -->
+  <div class="section-wrapper">
+    <div class="section-title fade-in">10 — Action Roadmap</div>
+
+    <div class="phase-label fade-in">PHASE 0｜今すぐ動く</div>
+    <ul class="action-list fade-in" style="margin-bottom:28px;">
+      <li>
+        <div class="action-num">1</div>
+        <div><strong>物件見学</strong>｜黒保根物件の現地視察（03-3351-5601 / 物件番号17735T）。<strong>建築士を同行</strong>し、地目・接道・増築可否・擁壁状態を確認</div>
+      </li>
+      <li>
+        <div class="action-num">2</div>
+        <div><strong>融資打診</strong>｜本計画書を持参し、きりしん（不動産ローン）・日本政策金融公庫（設備資金）にアポを取る</div>
+      </li>
+      <li>
+        <div class="action-num">3</div>
+        <div><strong>サウナ発注</strong>｜totonoü 2.2m Pro Model（受注生産のため早めに問い合わせ）。ストーブ Cozy 12 も合わせて確認</div>
+      </li>
+      <li>
+        <div class="action-num">4</div>
+        <div><strong>発信スタート</strong>｜「黒保根に秘密基地を作る」を今すぐSNSで宣言。物件見学・狩猟ワークショップなど過程からコンテンツ化</div>
+      </li>
+      <li>
+        <div class="action-num">5</div>
+        <div><strong>車両調達</strong>｜Garage 藤掛屋にトライトン（24-25年式 GSR・ヤマブキ・モール付）をオークション代行依頼（eBay事業予算で別途）</div>
+      </li>
+    </ul>
+
+    <div class="phase-label fade-in">PHASE 1｜物件取得〜開業準備</div>
+    <ul class="action-list fade-in" style="margin-bottom:28px;">
+      <li>
+        <div class="action-num">6</div>
+        <div><strong>契約・取得</strong>｜売買契約・融資実行・登記。不動産取得税・司法書士費用は自己資金で対応</div>
+      </li>
+      <li>
+        <div class="action-num">7</div>
+        <div><strong>工事発注</strong>｜リノベ・テラス・サウナ・ソーラーの施工業者を選定。<strong>桐生市の工務店</strong>を優先（地域との関係構築にもなる）</div>
+      </li>
+      <li>
+        <div class="action-num">8</div>
+        <div><strong>保険切替</strong>｜火災保険を民泊対応プランに変更。民泊向け賠償責任保険に加入（月数千円〜）</div>
+      </li>
+      <li>
+        <div class="action-num">9</div>
+        <div><strong>スマートロック設置</strong>｜SESAME・SADIOT等を導入。都心からの遠隔チェックイン対応</div>
+      </li>
+    </ul>
+
+    <div class="phase-label fade-in">PHASE 2｜開業</div>
+    <ul class="action-list fade-in" style="margin-bottom:28px;">
+      <li>
+        <div class="action-num">10</div>
+        <div><strong>消防検査</strong>｜消防署に連絡し、消火器・火災警報器の設置確認 → <strong>消防法令適合通知書</strong>を取得</div>
+      </li>
+      <li>
+        <div class="action-num">11</div>
+        <div><strong>民泊届出</strong>｜群馬県知事へ住宅宿泊事業法の届出（登記簿謄本・間取り図・本人確認書類 等）。準備期間1〜2ヶ月</div>
+      </li>
+      <li>
+        <div class="action-num">12</div>
+        <div><strong>Airbnb登録</strong>｜届出番号を取得後にAirbnbへ登録。素泊まり・鮨付き・BBQ肉セットのプランを設定</div>
+      </li>
+      <li>
+        <div class="action-num">13</div>
+        <div><strong>近隣挨拶</strong>｜開業前に近隣住民・自治会への挨拶。桐生の友人ネットワークを通じて地域に溶け込む</div>
+      </li>
+    </ul>
+
+    <div class="phase-label fade-in">PHASE 3｜将来</div>
+    <ul class="action-list fade-in">
+      <li>
+        <div class="action-num">14</div>
+        <div><strong>狩猟免許取得</strong>｜わな猟免許 → 黒保根エリアの猟友会と連携 → 狩猟体験プランの提供開始</div>
+      </li>
+      <li>
+        <div class="action-num">15</div>
+        <div><strong>Airbnb拡張</strong>｜黒保根の稼働実績を元に2棟目（古民家・山小屋等）の取得検討。体験型民泊のブランド横展開</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ===== CTA ===== -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">Come & Join</div>
+    <h2 class="cta-heading">
+      黒保根で、<em>あなたの人生</em>と<br>交差しませんか。
+    </h2>
+    <p class="cta-desc">
+      マグロの握りを食べながら焚き火を囲み、サウナで整い、<br>
+      誰かの話に刺激を受けて、少し人生が変わって帰っていく——<br>
+      そういう場所にしたい。
+    </p>
+    <div class="cta-buttons">
+      <a href="mailto:contact@triton-base.jp" class="cta-btn-primary">お問い合わせ</a>
+      <a href="https://github.com/MoneyGoose123/triton-base" target="_blank" class="cta-btn-secondary">GitHub で見る</a>
+    </div>
+    <div class="cta-sns">SNS発信も随時更新中 — 過程から見てほしい</div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
   <div class="footer">
-    <div><strong>PROJECT TRITON BASE</strong>｜事業計画概要書</div>
+    <div><strong>PROJECT TRITON BASE</strong>｜中村 大祐 / 事業計画概要書</div>
     <div>2026年3月 作成</div>
   </div>
 
 </div>
+
+<script>
+  // Scroll-triggered fade-in animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Subtle parallax on hero image
+  const heroImg = document.getElementById('heroImg');
+  if (heroImg) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY < window.innerHeight) {
+        heroImg.style.transform = `translateY(${scrollY * 0.3}px)`;
+      }
+    }, { passive: true });
+  }
+</script>
 </body>
 </html>
