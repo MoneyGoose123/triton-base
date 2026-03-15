@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>なぜ私はこれをやるのか｜中村大祐</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0e1c36;
+      --gold: #c8a84b;
+      --cream: #f7f5ef;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #e2ddd5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 48px 120px;
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 64px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-eyebrow {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .page-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .page-meta {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    /* Entry */
+    .entry {
+      margin-bottom: 56px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .entry:last-of-type {
+      border-bottom: none;
+    }
+    .entry-date {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .entry-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .entry-body {
+      font-size: 15px;
+      line-height: 2.1;
+      color: var(--text);
+    }
+    .entry-body p {
+      margin-bottom: 20px;
+    }
+    .entry-body p:last-child {
+      margin-bottom: 0;
+    }
+    .entry-body em {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--navy);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 1px;
+    }
+    .entry-body blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: #fff;
+      border-radius: 0 8px 8px 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.9;
+    }
+
+    /* Insight box */
+    .insight {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 28px 0;
+      font-size: 14px;
+      line-height: 2;
+    }
+    .insight strong { color: var(--gold); }
+    .insight-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    /* Number list */
+    .reason-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+    .reason-list li {
+      display: flex;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    .reason-list li:last-child { border-bottom: none; }
+    .reason-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      width: 28px;
+      margin-top: 2px;
+    }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 48px 24px 80px; }
+      .page-title { font-size: 24px; }
+      .entry-title { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="page-header">
+    <div class="page-eyebrow">Personal Memo — 中村大祐</div>
+    <h1 class="page-title">なぜ私はこれをやるのか</h1>
+    <div class="page-meta">PROJECT TRITON BASE — 覚書・悩み・気づきの記録</div>
+  </div>
+
+  <!-- Entry 1 -->
+  <div class="entry">
+    <div class="entry-date">2026-03-16</div>
+    <h2 class="entry-title">お金の使い方が間違っていた</h2>
+    <div class="entry-body">
+      <p>年商6,000万円の会社を持っていながら、役員給与を月20万円に抑え、節税のために飲み代や不要な交際費を使いまくっていた。お金は消えて、資産は何も残らない。</p>
+      <p>一方でキリマンジャロに登り、津軽海峡でクロマグロを釣り、WBCを見にマイアミへ行く。これらは全部コンテンツになって、人を惹きつけて、ブランドになって返ってくる。</p>
+      <blockquote>
+        消えるお金に使うのか。<br>残るものに使うのか。
+      </blockquote>
+      <p>黒保根への投資は「消えるお金」を「残るもの」に変える行為だと気づいた。不動産、設備、ソーラー——全部資産になる。そして20年後、ローンが終われば完全に自分のものになる場所ができる。</p>
+
+      <div class="insight">
+        <div class="insight-label">気づき</div>
+        今やっている「税金対策の経費使い」より、黒保根への投資の方が圧倒的に合理的。<br>
+        <strong>同じ「税金を減らす」行為でも、使ったら消えるか、資産が残るかが全然違う。</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry 2 -->
+  <div class="entry">
+    <div class="entry-date">2026-03-16</div>
+    <h2 class="entry-title">本業が失敗したとき、黒保根があると何が変わるか</h2>
+    <div class="entry-body">
+      <p>「本業がうまくいかなくなったら」「いつまで働けるかわからない」——これが一番の不安だった。でも冷静に考えると、黒保根はその不安への答えになっている。</p>
+
+      <ul class="reason-list">
+        <li>
+          <div class="reason-num">1</div>
+          <div>住む場所がある。ローンが終われば完全に自分のもの。東京で家賃を払い続けるシナリオとは全く違う。</div>
+        </li>
+        <li>
+          <div class="reason-num">2</div>
+          <div>ソーラーで電気代がほぼゼロ。庭の野菜と狩猟で食費が下がる。固定費が劇的に下がった状態で生きていける。</div>
+        </li>
+        <li>
+          <div class="reason-num">3</div>
+          <div>設備ローン7年が終われば月の返済は5.7万円だけになる。本業が多少鈍っても耐えられる水準になる。</div>
+        </li>
+        <li>
+          <div class="reason-num">4</div>
+          <div>Airbnbが少しでも動けば現金が入り続ける。完全に収入ゼロにはなりにくい。</div>
+        </li>
+      </ul>
+
+      <blockquote>
+        「本業が失敗するかもしれないからやらない」ではなく、<br>
+        「本業が失敗したときのために作っておく」が正しい見方だ。
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- Entry 3 -->
+  <div class="entry">
+    <div class="entry-date">2026-03-16</div>
+    <h2 class="entry-title">FM桐生に2度出て、桐生に仲間が増えた。でも渡せるものがなかった。</h2>
+    <div class="entry-body">
+      <p>FM桐生に2度出演した。桐生の仲町でだいぶ友達が増えた。でも輸出ビジネスをラジオで発信したところで何も宣伝にはならない。中村大祐という人間でラジオに出ていても、それをキャッシュにできない非効率さを感じていた。</p>
+      <p>eBayスクールへの勧誘はしたくない。でも黒保根があれば自然に案内できる。</p>
+      <p>それより何より、<em>息子と娘のパパ友・ママ友に渡したいものがある。</em></p>
+      <p>狩猟、農業、焚き火、釣り——学校では絶対に教えてくれないことがここにある。親同士も焚き火を囲みながら話せる。興味が出た人が自然に「eBayってどうやるの？」と聞いてくる。勧誘ではなく、体験から始まる関係。</p>
+
+      <div class="insight">
+        <div class="insight-label">気づき</div>
+        「中村大祐という人間」のファンはすでにいる。でも今まで<strong>渡せるものがなかった。</strong><br>
+        黒保根BASEはその「渡せるもの」になる。
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry 4 -->
+  <div class="entry">
+    <div class="entry-date">2026-03-16</div>
+    <h2 class="entry-title">ビジネスとプライベートを切り分けない、という生き方</h2>
+    <div class="entry-body">
+      <p>トライトンでゲストを駅まで迎えに行く。それは接客であり、出会いであり、人脈であり、ビジネスチャンスだ。釣り遠征は仕入れであり、冒険であり、コンテンツだ。黒保根BASEは自宅であり、事業拠点であり、みんなが集まる場所だ。</p>
+      <blockquote>
+        私はビジネスとプライベートを切り分けない。<br>全てが同じ延長線上の、一つの人生だ。<br>この場所は、みんなの人生が交差する場所にしたい。
+      </blockquote>
+      <p>収益は結果としてついてくる。仮にそうならなくても、自分が住む場所だからそれでいい。この場所自体が、人生の答えだ。</p>
+    </div>
+  </div>
+
+  <!-- Entry 5 -->
+  <div class="entry">
+    <div class="entry-date">2026-03-16</div>
+    <h2 class="entry-title">黒保根は見知らぬ土地ではない</h2>
+    <div class="entry-body">
+      <p>水沼診療所の立ち上げで黒保根役場と連携し、2年間あの土地で暮らした。地域の人を知っている。地域に知られている。帰ってくる場所がある、という感覚がある。</p>
+      <p>それがこのプロジェクトを「投資」ではなく「帰郷」に近いものにしている。</p>
+    </div>
+  </div>
+
+  <!-- Template for future entries -->
+  <div class="entry" style="opacity:0.4;">
+    <div class="entry-date">YYYY-MM-DD</div>
+    <h2 class="entry-title">（次の気づき・悩みをここに追加）</h2>
+    <div class="entry-body">
+      <p>このページに随時追記していく。</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div>中村 大祐 — 個人の覚書</div>
+    <div><a href="index.html">← 事業計画書へ</a></div>
+  </div>
+
+</div>
+</body>
+</html>
