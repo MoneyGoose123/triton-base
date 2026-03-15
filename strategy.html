@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRITON BASE｜法人・補助金戦略メモ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0e1c36;
+      --gold: #c8a84b;
+      --cream: #f7f5ef;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b6b6b;
+      --border: #e2ddd5;
+      --green: #2d7a4f;
+      --green-light: #e8f5ee;
+      --red: #c0392b;
+      --red-light: #fdf0ee;
+      --yellow-light: #fffbea;
+      --yellow: #b8860b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .page { max-width: 860px; margin: 0 auto; padding: 48px 32px 80px; }
+
+    /* HEADER */
+    .doc-header {
+      border-left: 5px solid var(--gold);
+      padding: 20px 24px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+    .doc-header h1 { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+    .doc-header p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .doc-meta { display: flex; gap: 24px; margin-top: 12px; }
+    .doc-meta span { font-size: 12px; background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 4px; }
+
+    /* SECTION */
+    .section { margin-bottom: 40px; }
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      padding-left: 10px;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 16px;
+    }
+    h2 { font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--navy); }
+    h3 { font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+
+    /* TABLE */
+    table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 13px; }
+    th {
+      background: var(--navy);
+      color: var(--white);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 12px;
+    }
+    td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #fafaf8; }
+    .amount { text-align: right; font-weight: 700; }
+    .total-row td { background: var(--navy) !important; color: var(--white); font-weight: 700; }
+
+    /* BADGES */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .badge-green { background: var(--green-light); color: var(--green); }
+    .badge-red { background: var(--red-light); color: var(--red); }
+    .badge-yellow { background: var(--yellow-light); color: var(--yellow); }
+    .badge-navy { background: var(--navy); color: var(--white); }
+
+    /* BOXES */
+    .box {
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+    .box-green { background: var(--green-light); border-left: 4px solid var(--green); }
+    .box-red { background: var(--red-light); border-left: 4px solid var(--red); }
+    .box-yellow { background: var(--yellow-light); border-left: 4px solid var(--yellow); }
+    .box-navy { background: var(--navy); color: var(--white); border-radius: 8px; padding: 24px 28px; }
+    .box-navy h3 { color: var(--gold); }
+    .box-border { border: 2px solid var(--border); border-radius: 8px; padding: 20px 24px; }
+
+    /* FLOW */
+    .flow { display: flex; flex-direction: column; gap: 0; }
+    .flow-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .flow-item:last-child { border-bottom: none; }
+    .flow-num {
+      width: 32px;
+      height: 32px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .flow-content strong { display: block; margin-bottom: 4px; }
+    .flow-content p { font-size: 13px; color: var(--muted); }
+
+    /* CHECKLIST */
+    .checklist { list-style: none; }
+    .checklist li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check-box {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--border);
+      border-radius: 3px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .checklist li strong { display: block; margin-bottom: 2px; }
+    .checklist li span { color: var(--muted); font-size: 12px; }
+
+    /* GRID */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+
+    /* SCENARIO */
+    .scenario {
+      border-radius: 8px;
+      padding: 18px 20px;
+      border: 2px solid var(--border);
+    }
+    .scenario.recommended { border-color: var(--gold); }
+    .scenario-label { font-size: 10px; letter-spacing: 2px; font-weight: 700; color: var(--muted); margin-bottom: 8px; }
+    .scenario-value { font-size: 22px; font-weight: 900; color: var(--navy); }
+    .scenario-value.gold { color: var(--gold); }
+    .scenario-value.green { color: var(--green); }
+    .scenario-note { font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+    /* DIVIDER */
+    .divider { border: none; border-top: 2px solid var(--border); margin: 32px 0; }
+
+    /* QUESTION */
+    .question-list { list-style: none; counter-reset: qnum; }
+    .question-list li {
+      counter-increment: qnum;
+      padding: 14px 16px 14px 48px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .question-list li:last-child { border-bottom: none; }
+    .question-list li::before {
+      content: "Q" counter(qnum);
+      position: absolute;
+      left: 0;
+      top: 14px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .question-list li strong { display: block; margin-bottom: 4px; font-size: 14px; }
+    .question-list li span { color: var(--muted); }
+
+    /* FOOTER */
+    .doc-footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 2px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .page { padding: 24px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="doc-header">
+    <h1>TRITON BASE｜法人・補助金 戦略メモ</h1>
+    <p>税理士・中小企業診断士との議論用ワーキングドキュメント</p>
+    <div class="doc-meta">
+      <span>作成：2026年3月</span>
+      <span>法人設立：令和元年5月</span>
+      <span>対象補助金：中小企業新事業進出補助金</span>
+    </div>
+  </div>
+
+
+  <!-- ===== 01 現在の法人構造 ===== -->
+  <div class="section">
+    <div class="section-title">01 — 現在の法人構造</div>
+    <h2>eBayエコシステム × 一法人</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>事業</th>
+          <th>内容</th>
+          <th style="text-align:right">年商</th>
+          <th>性質</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>eBay物販</strong></td>
+          <td>DAIWA・SHIMANOリール等の輸出販売</td>
+          <td class="amount">3,000万円</td>
+          <td><span class="badge badge-navy">物販</span></td>
+        </tr>
+        <tr>
+          <td><strong>eBay効率化ツール</strong></td>
+          <td>スクール生向け自社開発SaaS・サブスク</td>
+          <td class="amount">3,600万円</td>
+          <td><span class="badge badge-navy">SaaS</span></td>
+        </tr>
+        <tr>
+          <td><strong>eBayスクール</strong></td>
+          <td>eBay輸出ノウハウ・コミュニティ</td>
+          <td class="amount">2,000万円</td>
+          <td><span class="badge badge-navy">教育</span></td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2">合計（現在）</td>
+          <td class="amount">8,600万円</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-green">
+      <strong>3事業は「eBayエコシステム」として完全に一体</strong><br>
+      物販で稼ぎ → スクールで教え → ツールで効率化。垂直統合モデル。分社化の必然性は低い。
+    </div>
+  </div>
+
+
+  <!-- ===== 02 新規事業の概要 ===== -->
+  <div class="section">
+    <div class="section-title">02 — 新規事業：TRITON BASE</div>
+    <h2>既存事業との対比</h2>
+
+    <div class="grid-2">
+      <div class="box-border">
+        <div style="font-size:11px; letter-spacing:2px; color:var(--muted); font-weight:700; margin-bottom:10px;">既存事業</div>
+        <p style="font-size:15px; font-weight:700; margin-bottom:8px;">eBayエコシステム</p>
+        <p style="font-size:13px; color:var(--muted);">
+          完全オンライン<br>
+          デジタル商材・教育・SaaS<br>
+          国内外のeBayユーザー
+        </p>
+      </div>
+      <div class="box-border" style="border-color:var(--gold);">
+        <div style="font-size:11px; letter-spacing:2px; color:var(--gold); font-weight:700; margin-bottom:10px;">新規事業</div>
+        <p style="font-size:15px; font-weight:700; margin-bottom:8px;">TRITON BASE（体験民泊）</p>
+        <p style="font-size:13px; color:var(--muted);">
+          完全オフライン・フィジカル<br>
+          宿泊・体験・地域密着<br>
+          富裕層・体験志向ゲスト
+        </p>
+      </div>
+    </div>
+
+    <div class="box box-yellow">
+      <strong>補助金審査上の「新規性」が最大限に強い。</strong><br>
+      デジタル完結のeBay事業から、リアル体験経済への参入——業種・顧客・提供価値が全て異なる。「新分野進出」の説明がシンプルかつ明快。
+    </div>
+  </div>
+
+
+  <!-- ===== 03 補助金概要 ===== -->
+  <div class="section">
+    <div class="section-title">03 — 中小企業新事業進出補助金</div>
+    <h2>基本スペックと申請要件</h2>
+
+    <div class="grid-3">
+      <div class="scenario recommended">
+        <div class="scenario-label">補助率</div>
+        <div class="scenario-value gold">1 / 2</div>
+        <div class="scenario-note">対象経費の半額が補助</div>
+      </div>
+      <div class="scenario recommended">
+        <div class="scenario-label">補助上限（20名以下）</div>
+        <div class="scenario-value gold">2,500万円</div>
+        <div class="scenario-note">最大5,000万円投資で満額</div>
+      </div>
+      <div class="scenario recommended">
+        <div class="scenario-label">採択率（第1回）</div>
+        <div class="scenario-value">37.2%</div>
+        <div class="scenario-note">3,339件中1,241件採択</div>
+      </div>
+    </div>
+
+    <h3>申請要件チェック</h3>
+    <table>
+      <thead>
+        <tr><th>要件</th><th>内容</th><th>判定</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>新規性要件</strong></td>
+          <td>自社にとって新しい製品・サービスか</td>
+          <td><span class="badge badge-green">✅ クリア</span></td>
+        </tr>
+        <tr>
+          <td><strong>市場新規性要件</strong></td>
+          <td>既存と異なる顧客層・市場か</td>
+          <td><span class="badge badge-green">✅ クリア</span></td>
+        </tr>
+        <tr>
+          <td><strong>売上高要件</strong></td>
+          <td>新事業が総売上の<strong>10%以上</strong>になる見込みか</td>
+          <td><span class="badge badge-yellow">⚠️ 要設計</span></td>
+        </tr>
+        <tr>
+          <td><strong>付加価値要件</strong></td>
+          <td>付加価値額を年4%以上増加させるか</td>
+          <td><span class="badge badge-yellow">⚠️ 計画次第</span></td>
+        </tr>
+        <tr>
+          <td><strong>業歴要件</strong></td>
+          <td>既存事業の実績があること</td>
+          <td><span class="badge badge-green">✅ 6年10ヶ月</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-red">
+      <strong>最大のハードル：売上高10%要件</strong><br>
+      現状の年商8,600万円 × 10% = <strong>860万円/年（月71万円）</strong>が必要。<br>
+      現行計画のままでは達成困難。<strong>補助金ありきで改装レベルを上げ、単価設計を再設計する必要がある。</strong>
+    </div>
+  </div>
+
+
+  <!-- ===== 04 投資シナリオ ===== -->
+  <div class="section">
+    <div class="section-title">04 — 投資シナリオ比較</div>
+    <h2>補助金なし vs 補助金ありき</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>現行計画（補助金なし）</th>
+          <th style="background:#1a3a1a;">補助金ありき（推奨）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>総投資額</td>
+          <td>1,985万円</td>
+          <td><strong>3,000〜4,000万円</strong></td>
+        </tr>
+        <tr>
+          <td>補助金額</td>
+          <td>0円</td>
+          <td><strong>1,500〜2,000万円</strong></td>
+        </tr>
+        <tr>
+          <td>実質自己負担</td>
+          <td>1,985万円</td>
+          <td><strong>1,500〜2,000万円（むしろ安い）</strong></td>
+        </tr>
+        <tr>
+          <td>施設グレード</td>
+          <td>古民家リノベ・標準仕様</td>
+          <td><strong>離れ増設・高級仕様</strong></td>
+        </tr>
+        <tr>
+          <td>想定単価</td>
+          <td>1〜2万円/人</td>
+          <td><strong>3〜5万円/人</strong></td>
+        </tr>
+        <tr>
+          <td>月次収益（Year2+）</td>
+          <td>約33万円</td>
+          <td><strong>約71〜90万円</strong></td>
+        </tr>
+        <tr>
+          <td>10%要件（860万/年）</td>
+          <td><span class="badge badge-red">❌ 未達</span></td>
+          <td><span class="badge badge-green">✅ クリア</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="box box-green">
+      <strong>補助金ありきで設計した方が、自己負担が減って施設グレードが上がるという逆説。</strong><br>
+      「補助金が取れたらラッキー」ではなく「補助金前提で逆算設計する」が正解。
+    </div>
+
+    <h3 style="margin-top:24px;">追加投資の候補項目（税理士・診断士と要確認）</h3>
+    <table>
+      <thead>
+        <tr><th>追加項目</th><th>概算費用</th><th>効果</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>客室・内装グレードアップ</td>
+          <td class="amount">+300万円</td>
+          <td>単価2倍以上に</td>
+        </tr>
+        <tr>
+          <td>離れコテージ1棟増設</td>
+          <td class="amount">+400〜600万円</td>
+          <td>受入人数増・稼働率UP</td>
+        </tr>
+        <tr>
+          <td>アウトドアキッチン・囲炉裏</td>
+          <td class="amount">+150万円</td>
+          <td>体験価値向上</td>
+        </tr>
+        <tr>
+          <td>サウナ周辺強化（ロウリュ・外気浴エリア）</td>
+          <td class="amount">+150万円</td>
+          <td>サウナ単体でのブランド強化</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ===== 05 消費税還付 ===== -->
+  <div class="section">
+    <div class="section-title">05 — 消費税還付の可能性</div>
+    <h2>見落としがちな200万円</h2>
+
+    <div class="box-navy">
+      <h3>民泊は「課税売上」→ 設備投資の消費税が還付される</h3>
+      <p style="margin-top:12px; color:rgba(255,255,255,0.8); font-size:14px; line-height:2;">
+        宿泊サービスは消費税の課税売上に該当する。<br>
+        そのため、TRITON BASEへの設備投資（建物・サウナ・設備等）にかかる消費税は<strong style="color:var(--gold);">仕入税額控除（=還付）</strong>の対象になる可能性がある。<br><br>
+        <strong style="color:var(--gold);">試算：設備投資2,000万円 × 消費税10% = 200万円が還付候補</strong><br><br>
+        ただし課税・非課税の按分計算、不動産取得部分の扱い等、細かい判断が必要。<strong style="color:var(--gold);">税理士と要確認。</strong>
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ===== 06 法人構造の検討 ===== -->
+  <div class="section">
+    <div class="section-title">06 — 法人構造の検討</div>
+    <h2>同法人 vs 子会社化</h2>
+
+    <div class="grid-2">
+      <div class="box-border">
+        <h3>案A：同法人でTRITON BASEを運営</h3>
+        <table style="margin-top:12px;">
+          <tr><td><span class="badge badge-green">メリット</span></td><td style="font-size:12px;">補助金申請に既存実績が使える</td></tr>
+          <tr><td><span class="badge badge-green">メリット</span></td><td style="font-size:12px;">融資審査に既存PLが使える</td></tr>
+          <tr><td><span class="badge badge-green">メリット</span></td><td style="font-size:12px;">消費税還付の管理がシンプル</td></tr>
+          <tr><td><span class="badge badge-red">リスク</span></td><td style="font-size:12px;">民泊でのトラブルがeBay事業に波及</td></tr>
+          <tr><td><span class="badge badge-red">リスク</span></td><td style="font-size:12px;">帳簿・管理が複雑になる</td></tr>
+        </table>
+      </div>
+      <div class="box-border" style="border-color:var(--gold);">
+        <h3>案B：子会社化（補助金取得後）</h3>
+        <table style="margin-top:12px;">
+          <tr><td><span class="badge badge-green">メリット</span></td><td style="font-size:12px;">eBay事業とリスク分離</td></tr>
+          <tr><td><span class="badge badge-green">メリット</span></td><td style="font-size:12px;">BASE専用のPL・管理が明確</td></tr>
+          <tr><td><span class="badge badge-green">メリット</span></td><td style="font-size:12px;">将来の物件追加・外部資本入れやすい</td></tr>
+          <tr><td><span class="badge badge-red">注意</span></td><td style="font-size:12px;">補助金申請後に移す（申請は既存法人で）</td></tr>
+          <tr><td><span class="badge badge-red">注意</span></td><td style="font-size:12px;">移転コスト・税務処理が発生</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="box box-yellow">
+      <strong>推奨順序：補助金申請は既存法人 → 安定稼働後に子会社化を検討</strong><br>
+      新会社では補助金の「既存事業からの新分野進出」が証明できない。まず既存法人で申請・採択・開業まで進めてから、分社化を設計するのが最もリスクが低い。
+    </div>
+  </div>
+
+
+  <!-- ===== 07 アクションフロー ===== -->
+  <div class="section">
+    <div class="section-title">07 — アクションフロー</div>
+    <h2>今すぐ動く順番</h2>
+
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <strong>GビズIDプライム 今すぐ申請</strong>
+          <p>補助金申請の入口。取得に2〜3週間かかるので他の準備と並行して先に動かす。<br>
+          → <a href="https://gbiz-id.go.jp/" target="_blank">gbiz-id.go.jp</a></p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <strong>税理士と本件を共有</strong>
+          <p>①消費税還付の可能性確認　②法人構造（同法人 vs 子会社）の判断　③補助金申請の認定支援機関として動けるか確認</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <strong>中小企業診断士と補助金戦略を設計</strong>
+          <p>①10%売上要件を満たす事業計画の設計　②投資規模の最適化（補助金上限から逆算）　③事業計画書の作成支援（採択率向上のための書き方）</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <strong>物件見学・現地調査（並行）</strong>
+          <p>建築士同行で地目・接道・増築可否・擁壁状態を確認。補助金前提でリノベ範囲を再設計するための情報収集。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">5</div>
+        <div class="flow-content">
+          <strong>補助金申請</strong>
+          <p>認定支援機関（税理士 or 診断士）の確認書付きで申請。採択まで1〜3ヶ月。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">6</div>
+        <div class="flow-content">
+          <strong>採択後：物件取得・工事発注</strong>
+          <p>補助金採択を条件に物件契約・融資実行・施工スタート。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== 08 税理士への質問 ===== -->
+  <div class="section">
+    <div class="section-title">08 — 税理士への確認事項</div>
+    <ul class="question-list">
+      <li>
+        <strong>補助金申請の認定支援機関になれるか</strong>
+        <span>中小企業新事業進出補助金の申請には認定支援機関の確認書が必要。対応可否を確認。</span>
+      </li>
+      <li>
+        <strong>消費税還付の試算</strong>
+        <span>TRITON BASE設備投資（2,000〜4,000万円）にかかる消費税の仕入税額控除・還付可能額の試算。課税・非課税の按分計算も含む。</span>
+      </li>
+      <li>
+        <strong>同法人でBASE事業を立ち上げるか、子会社化するか</strong>
+        <span>リスク分離・税務最適化・融資の観点から最適な法人構造を確認。補助金申請後のタイミングも含む。</span>
+      </li>
+      <li>
+        <strong>不動産取得（宅地・建物）の税務処理</strong>
+        <span>法人での不動産取得における減価償却・定率法の適用。事業用資産としての処理方法。</span>
+      </li>
+      <li>
+        <strong>トライトン（法人車両）の減価償却</strong>
+        <span>eBay事業の法人車両として取得。定率法での減価償却スケジュールと節税効果の試算。</span>
+      </li>
+      <li>
+        <strong>ソーラー発電設備の税務処理</strong>
+        <span>再生可能エネルギー設備の即時償却・税額控除（中小企業投資促進税制等）の適用可能性。</span>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- ===== 09 診断士への質問 ===== -->
+  <div class="section">
+    <div class="section-title">09 — 中小企業診断士への確認事項</div>
+    <ul class="question-list">
+      <li>
+        <strong>10%売上要件を満たす事業計画の設計</strong>
+        <span>年商8,600万円の10% = 860万円/年（月71万円）が必要。投資規模・単価設計・稼働率の組み合わせで達成できる計画を一緒に設計したい。</span>
+      </li>
+      <li>
+        <strong>補助金申請に向けた投資規模の最適化</strong>
+        <span>補助金上限2,500万円（対象経費5,000万円）から逆算した最適投資額を検討。現実的な範囲での最大化。</span>
+      </li>
+      <li>
+        <strong>採択率を上げる事業計画書の書き方</strong>
+        <span>「eBayエコシステム → リアル体験経済への新規参入」というストーリーをどう事業計画に落とし込むか。審査員に刺さるポイント。</span>
+      </li>
+      <li>
+        <strong>申請タイミングと物件取得のタイミング調整</strong>
+        <span>補助金採択前に物件を取得すると補助対象外になる可能性。採択を条件にした物件契約の進め方。</span>
+      </li>
+      <li>
+        <strong>桐生市の補助金との併用可能性</strong>
+        <span>「きりゅう暮らし応援事業（空き家利活用助成）」最大180万円との併用の可否・条件確認。</span>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="doc-footer">
+    PROJECT TRITON BASE — 戦略メモ｜中村 大祐｜2026年3月<br>
+    <a href="index.html">← メインページに戻る</a>
+  </div>
+
+</div>
+</body>
+</html>
